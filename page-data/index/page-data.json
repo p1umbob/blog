@@ -1,1 +1,1 @@
-{"componentChunkName":"component---src-pages-index-jsx","path":"/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"id":"8ae3b3f3-8ae5-5808-8c42-0aeda16cb97f","frontmatter":{"title":"First Post","date":"08 June, 2021"},"fields":{"slug":"/firstpost/"},"excerpt":"Test, 这是第一篇文章。"}}]}},"pageContext":{}},"staticQueryHashes":[]}
+{"componentChunkName":"component---src-pages-index-jsx","path":"/","result":{"pageContext":{}},"staticQueryHashes":[]}
