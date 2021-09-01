@@ -1,3 +1,7 @@
+html {
+  overflow: auto;
+}
+
 .bg-anime-wrapper {
   position: absolute;
   top: 0;
