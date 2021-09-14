@@ -3,8 +3,36 @@ import React, { useEffect } from "react";
 import { css } from "@emotion/react";
 import "../styles/components/index.css";
 import Layout from "../components/layout";
+import {
+  gradientBlack,
+  gradientBlue,
+  gradientGreen,
+  gradientOrange,
+  gradientPink,
+} from "../styles/variables";
 export default () => {
   useEffect(() => {
+    const boxItems = Array.from(document.getElementsByClassName("box-item"));
+    const grads = [gradientBlue, gradientGreen, gradientOrange, gradientPink];
+    window.addEventListener("mousemove", (event) => {
+      boxItems[0].setAttribute(
+        "style",
+        `position: fixed; top: ${event.pageY / 10}px; left: ${
+          event.pageX / 20
+        }px; width: 200px; height: 100px; background-image: ${grads[0]}`
+      );
+    });
+    for (let i = 0; i < boxItems.length; i++) {
+      boxItems[i].setAttribute(
+        "style",
+        `position: fixed; top: ${i * 100}px; left: ${
+          i * 200
+        }px; width: 200px; height: 100px; background-image: ${grads[i]}`
+      );
+    }
+  }, []);
+
+  /* useEffect(() => {
     const canvas = document.getElementById("canvas"); // 获取元素
 
     const ctx = canvas.getContext("2d"); // 获取元素的 context
@@ -107,17 +135,23 @@ export default () => {
       );
       ctx.setTransform(1, 0, 0, 1, 0, 0);
     }
-  }, []);
+  }, []); */
 
   return (
     <div
       className="container"
       style={{
         display: `flex`,
-        background: `orange`,
+        backgroundImage: gradientBlack,
+        width: "100vw",
+        height: "100vh",
       }}
     >
       <canvas id="canvas"></canvas>
+      <div className="box-item box-item-1"></div>
+      <div className="box-item box-item-2"></div>
+      <div className="box-item box-item-3"></div>
+      <div className="box-item box-item-4"></div>
     </div>
   );
 };
