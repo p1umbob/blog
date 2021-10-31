@@ -2,6 +2,7 @@ import { Link, graphql, navigate } from "gatsby";
 import React, { useEffect } from "react";
 import { css } from "@emotion/react";
 import "../styles/components/index.css";
+import "../styles/components/typography.css";
 import Layout from "../components/layout";
 import {
   gradientBlack,
@@ -9,27 +10,46 @@ import {
   gradientGreen,
   gradientOrange,
   gradientPink,
+  gradientYellowOrange,
+  gradientYellow,
 } from "../styles/variables";
+
 export default () => {
   useEffect(() => {
     const boxItems = Array.from(document.getElementsByClassName("box-item"));
-    const grads = [gradientBlue, gradientGreen, gradientOrange, gradientPink];
-    window.addEventListener("mousemove", (event) => {
-      boxItems[0].setAttribute(
-        "style",
-        `position: fixed; top: ${event.pageY / 10}px; left: ${
-          event.pageX / 20
-        }px; width: 200px; height: 100px; background-image: ${grads[0]}`
-      );
-    });
+    const grads = [
+      gradientYellow,
+      gradientYellowOrange,
+      gradientOrange,
+      gradientPink,
+    ];
+
+    const handleMouseMove = (event) => {
+      for (let i = 0; i < boxItems.length; i++) {
+        boxItems[i].setAttribute(
+          "style",
+          `position: fixed; top: ${
+            event.pageY * (1 / Math.pow(2, -(i + 1))) * 0.1
+          }px; left: ${
+            event.pageX * (1 / Math.pow(2, -(i + 1))) * 0.1
+          }px; width: 200px; height: 100px; background-image: ${grads[i]}`
+        );
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
     for (let i = 0; i < boxItems.length; i++) {
       boxItems[i].setAttribute(
         "style",
-        `position: fixed; top: ${i * 100}px; left: ${
-          i * 200
+        `position: fixed; top: ${i * 200}px; left: ${
+          i * 400
         }px; width: 200px; height: 100px; background-image: ${grads[i]}`
       );
     }
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   /* useEffect(() => {
@@ -150,7 +170,35 @@ export default () => {
       <canvas id="canvas"></canvas>
       <div className="box-item box-item-1"></div>
       <div className="box-item box-item-2"></div>
-      <div className="box-item box-item-3"></div>
+      <div className="box-item box-item-3">
+        <Link
+          to="/blog"
+          style={{
+            textShadow: `none`,
+            backgroundImage: `none`,
+          }}
+        >
+          <div
+            style={{
+              height: `100%`,
+              width: `100%`,
+              display: `flex`,
+              justifyContent: `center`,
+              alignItems: `center`,
+            }}
+          >
+            <span
+              style={{
+                display: `inline`,
+                color: `white`,
+                fontFamily: `'Lobster', Helvetica`,
+              }}
+            >
+              Johan Pan
+            </span>
+          </div>
+        </Link>
+      </div>
       <div className="box-item box-item-4"></div>
     </div>
   );
