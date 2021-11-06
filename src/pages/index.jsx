@@ -14,9 +14,13 @@ import {
   gradientYellow,
 } from "../styles/variables";
 
+import mouth from "../images/mouth.jpg";
+
 export default () => {
   useEffect(() => {
     const boxItems = Array.from(document.getElementsByClassName("box-item"));
+    const eyeballs = document.getElementsByClassName("eyeball");
+
     const grads = [
       gradientYellow,
       gradientYellowOrange,
@@ -30,10 +34,10 @@ export default () => {
           "style",
           `position: absolute; 
           top: ${
-            (200 + 0.2 * event.pageY) * (1 / Math.pow(1.6, -(i + 1))) * 0.1
+            (200 + 0.4 * event.pageY) * (1 / Math.pow(1.6, -(i + 1))) * 0.1
           }px; 
           left: ${
-            (400 + 0.2 * event.pageX) * (1 / Math.pow(1.6, -(i + 1))) * 0.1
+            (400 + 0.4 * event.pageX) * (1 / Math.pow(1.6, -(i + 1))) * 0.1
           }px; 
           width: ${200 * (1 / Math.pow(1.3, -(i + 1))) * 0.4}px; 
           height: ${100 * (1 / Math.pow(1.3, -(i + 1))) * 0.4}px; 
@@ -43,7 +47,6 @@ export default () => {
           `
         );
       }
-      const eyeballs = document.getElementsByClassName("eyeball");
       for (const eyeball of eyeballs) {
         const cx = 50 + 0.1 * event.pageX * (1 / Math.pow(1.6, -(1 + 1))) * 0.1;
         const cy = 50 + 0.1 * event.pageY * (1 / Math.pow(1.6, -(1 + 1))) * 0.1;
@@ -53,14 +56,22 @@ export default () => {
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    const addMouseMove = () =>
+      window.addEventListener("mousemove", handleMouseMove);
+    const removeMouseMove = () =>
+      window.removeEventListener("mousemove", handleMouseMove);
+
+    for (const eyeball of eyeballs) {
+      eyeball.addEventListener("mouseenter", addMouseMove);
+      eyeball.addEventListener("click", removeMouseMove);
+    }
 
     for (let i = 0; i < boxItems.length; i++) {
       boxItems[i].setAttribute(
         "style",
         `position: absolute; 
-        top: ${(200 + 0.2 * 1) * (1 / Math.pow(1.6, -(i + 1))) * 0.1}px; 
-        left: ${(400 + 0.2 * 1) * (1 / Math.pow(1.6, -(i + 1))) * 0.1}px; 
+        top: ${(200 + 0.2 * 500) * (1 / Math.pow(1.6, -(i + 1))) * 0.1}px; 
+        left: ${(400 + 0.2 * 500) * (1 / Math.pow(1.6, -(i + 1))) * 0.1}px; 
         width: ${200 * (1 / Math.pow(1.3, -(i + 1))) * 0.4}px; 
         height: ${100 * (1 / Math.pow(1.3, -(i + 1))) * 0.4}px; 
         border-radius: 8px;
@@ -70,6 +81,10 @@ export default () => {
     }
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      eyeballs.forEach((eyeball) => {
+        eyeball.removeEventListener("mouseenter", addMouseMove);
+        eyeball.removeEventListener("mouseenter", removeMouseMove);
+      });
     };
   }, []);
 
@@ -83,27 +98,22 @@ export default () => {
         height: "100vh",
       }}
     >
-      {/* <div
+      <Desc />
+      <Eyeball top={20} left={"- 60px"} />
+      <Eyeball top={20} left={"+ 60px"} />
+      <div
+        className="mouth"
         css={css`
           & {
             position: absolute;
             left: 30%;
-            top: 30%;
-            // transform: translate(-50%, -50%);
-            box-shadow: 0 0 40px white;
-            border-radius: 8px;
-            padding: 10px;
-            font-size: 18px;
-            color: #cd6191;
-            font-family: Lobster, Heveltica;
+            top: calc(30% + 30px);
+            transform: translate(-36%, 0);
           }
         `}
       >
-        Johan Pan's
-      </div> */}
-      <Eyeball top={20} left={"- 60px"} />
-      <Eyeball top={20} left={"+ 60px"} />
-
+        <img src={mouth} width="200px" height="150px" />
+      </div>
       <div
         className="box-wrap"
         css={css`
@@ -148,7 +158,7 @@ export default () => {
                   display: `inline`,
                   color: `#891548`,
                   fontSize: "32px",
-                  fontFamily: `'Lobster', Helvetica`,
+                  fontFamily: "Georgia, serif",
                 }}
               >
                 Blog
@@ -187,6 +197,51 @@ const Eyeball = ({ top, left }) => {
         <circle className="eye" cx="50" cy="50" r="50" fill="white" />
         <circle className="eyeball" cx="50" cy="50" r="15" fill="black" />
       </svg>
+    </div>
+  );
+};
+
+const Desc = () => {
+  return (
+    <div
+      css={css`
+        & {
+          position: fixed;
+          left: 0;
+          top: 0;
+          padding: 30px;
+        }
+      `}
+    >
+      <div
+        className="title"
+        css={css`
+          & {
+            font-size: 28px;
+            color: #d0d0d0;
+            font-family: Lobster, Heveltica;
+          }
+        `}
+      >
+        <span
+          css={css`
+            & {
+              font-family: Lobster, Heveltica;
+            }
+          `}
+        >
+          Johan Pan
+        </span>
+        <span
+          css={css`
+            & {
+              font-family: Georgia, serif;
+            }
+          `}
+        >
+          's Borderland
+        </span>
+      </div>
     </div>
   );
 };
