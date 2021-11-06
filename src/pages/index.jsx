@@ -43,6 +43,14 @@ export default () => {
           `
         );
       }
+      const eyeballs = document.getElementsByClassName("eyeball");
+      for (const eyeball of eyeballs) {
+        const cx = 50 + 0.1 * event.pageX * (1 / Math.pow(1.6, -(1 + 1))) * 0.1;
+        const cy = 50 + 0.1 * event.pageY * (1 / Math.pow(1.6, -(1 + 1))) * 0.1;
+
+        eyeball.setAttribute("cx", cx > 85 ? 85 : cx);
+        eyeball.setAttribute("cy", cy > 85 ? 85 : cy);
+      }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -180,7 +188,7 @@ export default () => {
         height: "100vh",
       }}
     >
-      <div
+      {/* <div
         css={css`
           & {
             position: absolute;
@@ -197,7 +205,10 @@ export default () => {
         `}
       >
         Johan Pan's
-      </div>
+      </div> */}
+      <Eyeball top={20} left={"- 60px"} />
+      <Eyeball top={20} left={"+ 60px"} />
+
       {/* <canvas id="canvas"></canvas> */}
       <div
         className="box-wrap"
@@ -243,6 +254,35 @@ export default () => {
         </div>
         <div className="box-item box-item-4"></div>
       </div>
+    </div>
+  );
+};
+
+const Eyeball = ({ top, left }) => {
+  return (
+    <div
+      css={css`
+        & {
+          position: absolute;
+          left: calc(30% ${left});
+          top: ${top}%;
+          transform: translate(-30%, -30%);
+          // box-shadow: 0 0 40px white;
+          border-radius: 8px;
+          padding: 10px;
+          font-size: 18px;
+          color: #cd6191;
+          font-family: Lobster, Heveltica;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      `}
+    >
+      <svg width="100px" height="100px">
+        <circle className="eye" cx="50" cy="50" r="50" fill="white" />
+        <circle className="eyeball" cx="50" cy="50" r="15" fill="black" />
+      </svg>
     </div>
   );
 };
