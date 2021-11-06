@@ -1,6 +1,6 @@
 import { Link, graphql, navigate } from "gatsby";
 import React, { useEffect } from "react";
-import { css } from "@emotion/react";
+import { css, cx } from "@emotion/react";
 import "../styles/components/index.css";
 import "../styles/components/typography.css";
 import Layout from "../components/layout";
@@ -28,11 +28,19 @@ export default () => {
       for (let i = 0; i < boxItems.length; i++) {
         boxItems[i].setAttribute(
           "style",
-          `position: fixed; top: ${
-            event.pageY * (1 / Math.pow(2, -(i + 1))) * 0.1
-          }px; left: ${
-            event.pageX * (1 / Math.pow(2, -(i + 1))) * 0.1
-          }px; width: 200px; height: 100px; background-image: ${grads[i]}`
+          `position: absolute; 
+          top: ${
+            (200 + 0.2 * event.pageY) * (1 / Math.pow(1.6, -(i + 1))) * 0.1
+          }px; 
+          left: ${
+            (400 + 0.2 * event.pageX) * (1 / Math.pow(1.6, -(i + 1))) * 0.1
+          }px; 
+          width: ${200 * (1 / Math.pow(1.3, -(i + 1))) * 0.4}px; 
+          height: ${100 * (1 / Math.pow(1.3, -(i + 1))) * 0.4}px; 
+          border-radius: 8px;
+          box-shadow: 2px 2px 10px rgba(0,0,0,.4);
+          background-image: ${grads[i]};
+          `
         );
       }
     };
@@ -42,9 +50,14 @@ export default () => {
     for (let i = 0; i < boxItems.length; i++) {
       boxItems[i].setAttribute(
         "style",
-        `position: fixed; top: ${i * 200}px; left: ${
-          i * 400
-        }px; width: 200px; height: 100px; background-image: ${grads[i]}`
+        `position: absolute; 
+        top: ${(200 + 0.2 * 1) * (1 / Math.pow(1.6, -(i + 1))) * 0.1}px; 
+        left: ${(400 + 0.2 * 1) * (1 / Math.pow(1.6, -(i + 1))) * 0.1}px; 
+        width: ${200 * (1 / Math.pow(1.3, -(i + 1))) * 0.4}px; 
+        height: ${100 * (1 / Math.pow(1.3, -(i + 1))) * 0.4}px; 
+        border-radius: 8px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,.4);
+        background-image: ${grads[i]};`
       );
     }
     return () => {
@@ -161,45 +174,75 @@ export default () => {
     <div
       className="container"
       style={{
-        display: `flex`,
+        display: `block`,
         backgroundImage: gradientBlack,
         width: "100vw",
         height: "100vh",
       }}
     >
-      <canvas id="canvas"></canvas>
-      <div className="box-item box-item-1"></div>
-      <div className="box-item box-item-2"></div>
-      <div className="box-item box-item-3">
-        <Link
-          to="/blog"
-          style={{
-            textShadow: `none`,
-            backgroundImage: `none`,
-          }}
-        >
-          <div
+      <div
+        css={css`
+          & {
+            position: absolute;
+            left: 30%;
+            top: 30%;
+            // transform: translate(-50%, -50%);
+            box-shadow: 0 0 40px white;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 18px;
+            color: #cd6191;
+            font-family: Lobster, Heveltica;
+          }
+        `}
+      >
+        Johan Pan's
+      </div>
+      {/* <canvas id="canvas"></canvas> */}
+      <div
+        className="box-wrap"
+        css={css`
+          & {
+            position: relative;
+            top: 30%;
+            left: 30%;
+          }
+        `}
+      >
+        <div className="box-item box-item-1"></div>
+        <div className="box-item box-item-2"></div>
+        <div className="box-item box-item-3">
+          <Link
+            to="/blog"
             style={{
-              height: `100%`,
-              width: `100%`,
-              display: `flex`,
-              justifyContent: `center`,
-              alignItems: `center`,
+              textShadow: `none`,
+              backgroundImage: `none`,
             }}
           >
-            <span
+            <div
               style={{
-                display: `inline`,
-                color: `white`,
-                fontFamily: `'Lobster', Helvetica`,
+                height: `100%`,
+                width: `100%`,
+                display: `flex`,
+                justifyContent: `center`,
+                alignItems: `center`,
               }}
             >
-              Johan Pan
-            </span>
-          </div>
-        </Link>
+              <span
+                style={{
+                  display: `inline`,
+                  color: `#891548`,
+                  fontSize: "32px",
+                  fontFamily: `'Lobster', Helvetica`,
+                }}
+              >
+                Blog
+              </span>
+            </div>
+          </Link>
+        </div>
+        <div className="box-item box-item-4"></div>
       </div>
-      <div className="box-item box-item-4"></div>
     </div>
   );
 };
