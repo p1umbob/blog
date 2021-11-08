@@ -14,12 +14,13 @@ import {
   gradientYellow,
 } from "../styles/variables";
 
-import mouth from "../images/mouth.jpg";
+import mouth from "../images/mouth.png";
 
 export default () => {
   useEffect(() => {
     const boxItems = Array.from(document.getElementsByClassName("box-item"));
     const eyeballs = document.getElementsByClassName("eyeball");
+    const mouth = document.getElementsByClassName("mouth")[0];
 
     const grads = [
       gradientYellow,
@@ -65,6 +66,7 @@ export default () => {
       eyeball.addEventListener("mouseenter", addMouseMove);
       eyeball.addEventListener("click", removeMouseMove);
     }
+    mouth.addEventListener("mouseenter", addMouseMove);
 
     for (let i = 0; i < boxItems.length; i++) {
       boxItems[i].setAttribute(
@@ -81,10 +83,11 @@ export default () => {
     }
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      eyeballs.forEach((eyeball) => {
+      for (const eyeball of eyeballs) {
         eyeball.removeEventListener("mouseenter", addMouseMove);
         eyeball.removeEventListener("mouseenter", removeMouseMove);
-      });
+      }
+      mouth.removeEventListener("mouseenter", addMouseMove);
     };
   }, []);
 
@@ -112,15 +115,15 @@ export default () => {
           }
         `}
       >
-        <img src={mouth} width="200px" height="150px" />
+        <img src={mouth} width="200px" height="200px" />
       </div>
       <div
         className="box-wrap"
         css={css`
           & {
             position: relative;
-            top: 30%;
-            left: 30%;
+            top: calc(30% + 80px);
+            left: calc(30% - 50px);
           }
         `}
       >
