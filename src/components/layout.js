@@ -16,6 +16,7 @@ export default ({ children }) => (
       width: `100%`,
       height: `100vh`,
       backgroundImage: gradientBlack,
+      color: "#d0d0d0",
     }}
   >
     <div
@@ -27,7 +28,13 @@ export default ({ children }) => (
     >
       <header style={{ marginBottom: `1.5rem` }}>
         <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-          <h3 style={{ display: `inline`, fontFamily: "Lobster" }}>
+          <h3
+            style={{
+              display: `inline`,
+              fontFamily: "Lobster",
+              color: "#d0d0d0",
+            }}
+          >
             Johan Pan
           </h3>
         </Link>
