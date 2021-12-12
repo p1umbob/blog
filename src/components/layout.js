@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { gradientBlack } from "../styles/variables";
+import "../styles/components/layout.scss";
 
 const ListLink = (props) => (
   <li style={{ display: `inline-block`, marginRight: `1rem` }}>

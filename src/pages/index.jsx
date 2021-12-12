@@ -8,19 +8,20 @@ export default ({ data }) => {
   console.log(data);
   return (
     <Layout>
-      <div className="bg-anime-wrapper">
+      {/* <div className="bg-anime-wrapper">
         <div className="bg-anime">
           /////////////////////////////////////////////////////
         </div>
-      </div>
+      </div> */}
       <h2 style={{ color: "#d0d0d0" }}>Hi there</h2>
       <p>I am pzij, and am a curious web developer levelling up in progress.</p>
       <h4 style={{ color: "#d0d0d0" }}>
         {data.allMarkdownRemark.totalCount} Posts
       </h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
-        <div key={node.id}>
+        <div className="blogpost-wrap" key={node.id}>
           <Link
+            className="blogpost-link"
             to={node.fields.slug}
             css={css`
               text-decoration: none;
@@ -30,8 +31,8 @@ export default ({ data }) => {
             <h3>
               {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
             </h3>
-            <p>{node.excerpt}</p>
           </Link>
+          <p>{node.excerpt}</p>
         </div>
       ))}
     </Layout>

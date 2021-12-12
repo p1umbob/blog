@@ -2,5 +2,9 @@ import React from "react";
 import Layout from "../components/layout";
 
 export default () => {
-  return <Layout>Contact me</Layout>;
+  return (
+    <Layout>
+      <p>Contact me</p>
+    </Layout>
+  );
 };

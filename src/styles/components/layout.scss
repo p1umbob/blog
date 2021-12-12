@@ -1,0 +1,35 @@
+a {
+  color: #dadada;
+  text-decoration: none;
+  text-shadow: none;
+  background-image: none;
+  position: relative;
+  z-index: 1;
+  &::after {
+    content: "";
+    width: 110%;
+    border-radius: 4px;
+    height: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #c84b31;
+    z-index: 0;
+  }
+}
+
+.blogpost-wrap {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: transparent;
+    text-shadow: 2px 2px 2px #dadada;
+    &:hover {
+      color: #dadada;
+      text-shadow: none;
+    }
+  }
+}
