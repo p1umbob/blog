@@ -1,5 +1,17 @@
 html {
-  overflow: hidden;  
+  overflow: hidden;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  color: #d0d0d0;
 }
 
 .bg-anime-wrapper {

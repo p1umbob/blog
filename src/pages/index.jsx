@@ -8,13 +8,10 @@ export default ({ data }) => {
   console.log(data);
   return (
     <Layout>
-      {/* <div className="bg-anime-wrapper">
-        <div className="bg-anime">
-          /////////////////////////////////////////////////////
-        </div>
-      </div> */}
-      <h2 style={{ color: "#d0d0d0" }}>Hi there</h2>
-      <p>I am pzij, and am a curious web developer levelling up in progress.</p>
+      <p>
+        Personal blog by <a href={"https://github.com/pzij"}>Johan Pan</a>.
+      </p>
+      <p>I learn and share.</p>
       <h4 style={{ color: "#d0d0d0" }}>
         {data.allMarkdownRemark.totalCount} Posts
       </h4>

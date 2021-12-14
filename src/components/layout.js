@@ -4,7 +4,7 @@ import { gradientBlack } from "../styles/variables";
 import "../styles/components/layout.scss";
 
 const ListLink = (props) => (
-  <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+  <li style={{ display: "inline-block", margin: "0 1rem 0 0" }}>
     <Link to={props.to}>{props.children}</Link>
   </li>
 );
@@ -13,36 +13,39 @@ export default ({ children }) => (
   <div
     className="container"
     style={{
-      display: `flex`,
-      width: `100%`,
-      height: `100vh`,
       backgroundImage: gradientBlack,
-      color: "#d0d0d0",
     }}
   >
     <div
       style={{
-        margin: `3rem auto`,
+        margin: "3rem auto",
         maxWidth: 650,
-        padding: `0 1rem`,
+        padding: "0 1rem",
       }}
     >
-      <header style={{ marginBottom: `1.5rem` }}>
-        <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-          <h3
-            style={{
-              display: `inline`,
-              fontFamily: "Lobster",
-              color: "#d0d0d0",
-            }}
-          >
-            Johan Pan
-          </h3>
+      <header
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          minWidth: "800px",
+          paddingBottom: "2rem",
+        }}
+      >
+        <Link to="/" style={{ textShadow: "none", backgroundImage: "none" }}>
+          <h3 className={"navbar-title"}>Hydroforas</h3>
         </Link>
-        <ul style={{ listStyle: `none`, float: `right` }}>
-          <ListLink to="/">Home</ListLink>
-          <ListLink to="/about/">About</ListLink>
-          <ListLink to="/contact/">Contact</ListLink>
+        <ul style={{ listStyle: "none", float: "right", margin: "0" }}>
+          <ListLink to="/">
+            <span className="navbar-item">Home</span>
+          </ListLink>
+          <ListLink to="/about/">
+            <span className="navbar-item">About</span>
+          </ListLink>
+          <ListLink to="/contact/">
+            <span className="navbar-item">Contact</span>
+          </ListLink>
         </ul>
       </header>
       {children}

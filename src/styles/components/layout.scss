@@ -1,3 +1,22 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  color: rgb(208, 208, 208);
+  overflow: auto;
+  &::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2d4263;
+    border-radius: 3px;
+    &:hover {
+      background-color: turquoise;
+    }
+  }
+}
+
 a {
   color: #dadada;
   text-decoration: none;
@@ -5,6 +24,7 @@ a {
   background-image: none;
   position: relative;
   z-index: 1;
+  font-weight: 600;
   &::after {
     content: "";
     width: 110%;
@@ -14,22 +34,33 @@ a {
     bottom: 0;
     left: 0;
     background-color: #c84b31;
-    z-index: 0;
+    z-index: -1;
   }
 }
 
 .blogpost-wrap {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  *:not(p) {
     color: transparent;
-    text-shadow: 2px 2px 2px #dadada;
-    &:hover {
-      color: #dadada;
-      text-shadow: none;
-    }
+    text-shadow: 2px 2px 1px #dadada;
   }
+  p {
+    color: transparent;
+    text-shadow: 2px 2px 3px #dadada;
+  }
+  &:hover * {
+    color: #dadada;
+    text-shadow: none;
+  }
+}
+
+.navbar-title {
+  font-family: "Lobster";
+  color: #d0d0d0;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+.navbar-item {
+  color: #d0d0d0;
+  font-weight: 600;
 }
