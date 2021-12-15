@@ -3,9 +3,13 @@ import { Link } from "gatsby";
 import { gradientBlack } from "../styles/variables";
 import "../styles/components/layout.scss";
 
+const headerLinkStyle = { textShadow: "none", backgroundImage: "none" };
+
 const ListLink = (props) => (
   <li style={{ display: "inline-block", margin: "0 1rem 0 0" }}>
-    <Link to={props.to}>{props.children}</Link>
+    <Link to={props.to} style={headerLinkStyle}>
+      {props.children}
+    </Link>
   </li>
 );
 
@@ -33,7 +37,7 @@ export default ({ children }) => (
           paddingBottom: "2rem",
         }}
       >
-        <Link to="/" style={{ textShadow: "none", backgroundImage: "none" }}>
+        <Link to="/" style={headerLinkStyle}>
           <h3 className={"navbar-title"}>Hydroforas</h3>
         </Link>
         <ul style={{ listStyle: "none", float: "right", margin: "0" }}>
