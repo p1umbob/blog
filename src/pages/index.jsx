@@ -25,11 +25,19 @@ export default ({ data }) => {
               color: inherit;
             `}
           >
-            <h3>
+            <h3
+              style={{
+                textDecoration: "underline",
+                textDecorationStyle: "solid",
+                textDecorationColor: "#e97d8c",
+              }}
+            >
               {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
             </h3>
+            <p style={{ fontWeight: "normal", fontSize: "14px" }}>
+              {node.excerpt}
+            </p>
           </Link>
-          <p>{node.excerpt}</p>
         </div>
       ))}
     </Layout>

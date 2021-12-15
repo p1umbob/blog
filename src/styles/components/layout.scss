@@ -38,21 +38,6 @@ a {
   }
 }
 
-.blogpost-wrap {
-  *:not(p) {
-    color: transparent;
-    text-shadow: 2px 2px 1px #dadada;
-  }
-  p {
-    color: transparent;
-    text-shadow: 2px 2px 3px #dadada;
-  }
-  &:hover * {
-    color: #dadada;
-    text-shadow: none;
-  }
-}
-
 .navbar-title {
   font-family: "Lobster";
   color: #d0d0d0;
