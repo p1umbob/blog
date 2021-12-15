@@ -96,13 +96,13 @@ define(function (require) {
 
 全称 ES Modules，是一个 JS 官方提议的标准
 
-```javascript
+```js
 import React from "react";
 ```
 
 或者
 
-```javascript
+```js
 import {foo, bar} from './myLib';
 
 ...
