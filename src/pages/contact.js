@@ -5,6 +5,7 @@ export default () => {
   return (
     <Layout>
       <h3>Contact me</h3>
+      <p>swanf [at] outlook.com</p>
     </Layout>
   );
 };
