@@ -6,7 +6,6 @@ export default function BlogPost(props) {
   console.log(props.pageContext.excerpt);
   return (
     <Layout>
-      <div>Hello blog post</div>
       <div
         className="blog-post-container"
         dangerouslySetInnerHTML={{
