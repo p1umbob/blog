@@ -14,7 +14,7 @@ const Home: any = ({ allPosts }) => {
       </p>
       <p>I learn and share.</p>
       <h4 style={{ color: "#d0d0d0" }}>{allPosts.length} Posts</h4>
-      {allPosts.map((post) => (
+      {allPosts.map((post: any) => (
         <div className="blogpost-wrap" key={post.slug}>
           <Link href={`/blog/${post.slug}`} passHref>
             <div>

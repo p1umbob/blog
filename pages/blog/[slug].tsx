@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
+import { Layout } from "../../layout/bloglayout";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
+import BlockContent from "@sanity/block-content-to-react";
 
 const Blogpost: any = ({ post, morePosts, preview }: any) => {
   const router = useRouter();
@@ -11,10 +13,16 @@ const Blogpost: any = ({ post, morePosts, preview }: any) => {
   console.log(post);
 
   return (
-    <div>
-      <h1>Blog Post</h1>
-      {JSON.stringify(post)}
-    </div>
+    <Layout>
+      <h1>{post.title}</h1>
+      {/* <BlockContent blocks={post.content} /> */}
+      <div
+        className="blog-post-container"
+        dangerouslySetInnerHTML={{
+          __html: post.content,
+        }}
+      ></div>
+    </Layout>
   );
 };
 

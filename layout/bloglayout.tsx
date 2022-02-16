@@ -1,14 +1,8 @@
 import Link from "next/link";
 import React from "react";
-import { gradientBlack } from "../styles/variables";
 
 export const Layout = ({ children }) => (
-  <div
-    className="container"
-    style={{
-      backgroundImage: gradientBlack,
-    }}
-  >
+  <div className="container">
     <div
       style={{
         margin: "3rem auto",
