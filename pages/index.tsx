@@ -6,7 +6,7 @@ import { Layout } from "../layout/bloglayout";
 import styles from "../styles/Home.module.css";
 import { getAllPosts } from "../lib/api";
 
-const Home: any = ({ allPosts }) => {
+const Home: any = ({ allPosts }: any) => {
   console.log(allPosts);
 
   return (

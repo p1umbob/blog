@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-export const Layout = ({ children }) => (
+export const Layout = ({ children }: any) => (
   <div className="container">
     <div
       style={{

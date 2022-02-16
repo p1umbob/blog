@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-function Posts({ posts }) {
+function Posts({ posts }: any) {
   return (
     <ul>
-      {posts.map((post) => (
+      {posts.map((post: any) => (
         <li key={post.id}>
           <Link
             href={{

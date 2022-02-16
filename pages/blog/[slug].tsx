@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { Layout } from "../../layout/bloglayout";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
-import BlockContent from "@sanity/block-content-to-react";
 
 const Blogpost: any = ({ post, morePosts, preview }: any) => {
   const router = useRouter();
