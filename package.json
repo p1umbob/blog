@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "next build --prefix-paths && gh-pages -d public"
   },
   "dependencies": {
     "classnames": "^2.3.1",

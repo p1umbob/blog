@@ -20,18 +20,40 @@ export const Layout = ({ children }) => (
           paddingBottom: "2rem",
         }}
       >
-        <Link href="/" passHref>
-          <h3 className={"navbar-title"}> Hydroforas </h3>
-        </Link>
+        <div className="logo">
+          <Link href="/" passHref>
+            <h3 className={"navbar-title"} style={{ cursor: "pointer" }}>
+              Πάν
+            </h3>
+          </Link>
+          {/* <div className={"navbar-desc"} style={{ color: "#d0d0d0" }}>
+            hydroforas
+          </div> */}
+        </div>
         <ul style={{ listStyle: "none", float: "right", margin: "0" }}>
           <Link href="/" passHref>
-            <span className="navbar-item"> Home </span>
+            <span
+              className="navbar-item"
+              style={{ margin: "0 12px", cursor: "pointer" }}
+            >
+              Home
+            </span>
           </Link>
           <Link href="/about/" passHref>
-            <span className="navbar-item"> About </span>
+            <span
+              className="navbar-item"
+              style={{ margin: "0 12px", cursor: "pointer" }}
+            >
+              About
+            </span>
           </Link>
           <Link href="/contact/" passHref>
-            <span className="navbar-item"> Contact </span>
+            <span
+              className="navbar-item"
+              style={{ margin: "0 12px", cursor: "pointer" }}
+            >
+              Contact
+            </span>
           </Link>
         </ul>
       </header>
