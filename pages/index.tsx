@@ -11,28 +11,19 @@ const Home: any = ({ allPosts }: any) => {
 
   return (
     <Layout>
-      <p>
-        Personal blog by <a href={"https://github.com/pzij"}>Johan Pan</a>.
-      </p>
-      <p>I learn and share.</p>
-      <h4 style={{ color: "#d0d0d0" }}>{allPosts.length} Posts</h4>
+      <section className="my-5">
+        <p>
+          Personal blog by <a href={"https://github.com/pzij"}>Johan Pan</a>.
+        </p>
+        <p>I learn and share.</p>
+      </section>
+      <h4 className="text-slate-300 my-5">{allPosts.length} Posts</h4>
       {allPosts.map((post: any) => (
-        <div className="blogpost-wrap" key={post.slug}>
-          <Link href={`/blog/${post.slug}`} passHref>
-            <div>
-              <h3
-                style={{
-                  textDecoration: "underline",
-                  textDecorationStyle: "solid",
-                  textDecorationColor: "#e97d8c",
-                }}
-              >
-                {post.title} <span>— {post.date}</span>
-              </h3>
-              <p style={{ fontWeight: "normal", fontSize: "14px" }}>
-                {post.excerpt}
-              </p>
-            </div>
+        <div className="blogpost-wrap my-5 text-xl" key={post.slug}>
+          <Link href={`blog/${post.slug}`}>
+            <a className="underline decoration-solid decoration-pink-500/50">
+              {post.title} <span>— {post.date}</span>
+            </a>
           </Link>
         </div>
       ))}

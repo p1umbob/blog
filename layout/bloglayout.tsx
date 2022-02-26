@@ -11,14 +11,15 @@ export const Layout = ({ children }: any) => (
       }}
     >
       <header
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          minWidth: "800px",
-          paddingBottom: "2rem",
-        }}
+        className="flex justify-between items-center my-10 h-52"
+        // style={{
+        //   display: "flex",
+        //   flexDirection: "row",
+        //   justifyContent: "space-between",
+        //   alignItems: "center",
+        //   minWidth: "800px",
+        //   paddingBottom: "2rem",
+        // }}
       >
         <div className="logo">
           <Link href="/" passHref>
