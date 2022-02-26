@@ -5,7 +5,11 @@ module.exports = {
     "./layout/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'pan-pattern': "url('/PAN.jpg')",
+      }
+    },
   },
   plugins: [],
 }

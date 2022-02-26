@@ -2,16 +2,17 @@ import Link from "next/link";
 import React from "react";
 
 export const Layout = ({ children }: any) => (
-  <div className="container">
+  <div className="container mx-auto">
     <div
-      style={{
-        margin: "3rem auto",
-        maxWidth: 650,
-        padding: "0 1rem",
-      }}
+      className=""
+      // style={{
+      //   margin: "3rem auto",
+      //   maxWidth: 650,
+      //   padding: "0 1rem",
+      // }}
     >
       <header
-        className="flex justify-between items-center my-10 h-52"
+        className="flex justify-between items-center my-10 h-52 bg-gradient-to-r from-gray-500 to-white-500 bg-no-repeat bg-center"
         // style={{
         //   display: "flex",
         //   flexDirection: "row",
@@ -22,10 +23,10 @@ export const Layout = ({ children }: any) => (
         // }}
       >
         <div className="logo">
-          <Link href="/" passHref>
-            <h3 className={"navbar-title"} style={{ cursor: "pointer" }}>
+          <Link href="/">
+            <a className="navbar-title cursor-pointer text-white ml-10 text-xl">
               Πάν
-            </h3>
+            </a>
           </Link>
           {/* <div className={"navbar-desc"} style={{ color: "#d0d0d0" }}>
             hydroforas
