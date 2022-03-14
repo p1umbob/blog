@@ -24,7 +24,7 @@ export const Layout = ({ children }: any) => (
       >
         <div className="logo">
           <Link href="/">
-            <a className="navbar-title cursor-pointer text-white ml-10 text-xl">
+            <a className="navbar-title font-serif cursor-pointer text-white ml-10 text-xl">
               Πάν
             </a>
           </Link>
