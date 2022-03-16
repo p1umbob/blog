@@ -13,7 +13,15 @@ const Blogpost: any = ({ post, morePosts, preview }: any) => {
 
   return (
     <Layout>
-      <h1>{post.title}</h1>
+      <h1
+        className="text-3xl flex justify-center items-center underline"
+        style={{
+          textDecorationColor:
+            "#" + Math.floor(Math.random() * 16777215).toString(16),
+        }}
+      >
+        {post.title}
+      </h1>
       {/* <BlockContent blocks={post.content} /> */}
       <div
         className="blog-post-container"
