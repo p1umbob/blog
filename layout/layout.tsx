@@ -14,7 +14,7 @@ export const Layout = ({ children }: any) => (
       // }}
     >
       <header
-        className="flex justify-between items-center my-10 h-52 bg-gradient-to-r from-gray-500 to-white-500 bg-no-repeat bg-center"
+        className="flex justify-between items-center my-10 h-52 bg-no-repeat bg-center"
         // style={{
         //   display: "flex",
         //   flexDirection: "row",
@@ -24,39 +24,32 @@ export const Layout = ({ children }: any) => (
         //   paddingBottom: "2rem",
         // }}
       >
-        <div className="logo ml-5 flex justify-start items-center">
-          <Image src={img} alt="Jun" width={72} height={72} />
-          <Link href="/">
-            <a className="navbar-title font-serif cursor-pointer text-white text-xl ml-5">
+        <div className="logo ml-8 flex justify-start items-center cursor-pointer">
+          <Link href="/" passHref>
+            <Image src={img} alt="Jun" width={72} height={72} />
+          </Link>
+          {/* <Link href="/">
+            <a className="navbar-title font-sans cursor-pointer text-black text-xl ml-5">
               Πάν
             </a>
-          </Link>
+          </Link> */}
           {/* <div className={"navbar-desc"} style={{ color: "#d0d0d0" }}>
             hydroforas
           </div> */}
         </div>
-        <ul style={{ listStyle: "none", float: "right", margin: "0" }}>
+        <ul className="list-none float-right mr-8">
           <Link href="/" passHref>
-            <span
-              className="navbar-item"
-              style={{ margin: "0 12px", cursor: "pointer" }}
-            >
+            <span className="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light">
               Home
             </span>
           </Link>
           <Link href="/about/" passHref>
-            <span
-              className="navbar-item"
-              style={{ margin: "0 12px", cursor: "pointer" }}
-            >
+            <span className="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light">
               About
             </span>
           </Link>
           <Link href="/contact/" passHref>
-            <span
-              className="navbar-item"
-              style={{ margin: "0 12px", cursor: "pointer" }}
-            >
+            <span className="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light">
               Contact
             </span>
           </Link>
