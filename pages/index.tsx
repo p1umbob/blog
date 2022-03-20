@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Layout } from "../layout/bloglayout";
+import { Layout } from "../layout/layout";
 import styles from "../styles/Home.module.css";
 import { getAllPosts } from "../lib/api";
 

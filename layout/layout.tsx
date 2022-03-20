@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import img from "../public/qun.png";
 
 export const Layout = ({ children }: any) => (
   <div className="container mx-auto">
@@ -22,9 +24,10 @@ export const Layout = ({ children }: any) => (
         //   paddingBottom: "2rem",
         // }}
       >
-        <div className="logo">
+        <div className="logo ml-5 flex justify-start items-center">
+          <Image src={img} alt="Jun" width={72} height={72} />
           <Link href="/">
-            <a className="navbar-title font-serif cursor-pointer text-white ml-10 text-xl">
+            <a className="navbar-title font-serif cursor-pointer text-white text-xl ml-5">
               Πάν
             </a>
           </Link>
