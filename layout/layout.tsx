@@ -26,7 +26,15 @@ export const Layout = ({ children }: any) => (
       >
         <div className="logo ml-8 flex justify-start items-center cursor-pointer">
           <Link href="/" passHref>
-            <Image src={img} alt="Jun" width={72} height={72} />
+            <Image
+              loader={({ src }) => {
+                return `https://pzij.github.io/${src}`;
+              }}
+              src="qun.png"
+              alt="Jun"
+              width={72}
+              height={72}
+            />
           </Link>
           {/* <Link href="/">
             <a className="navbar-title font-sans cursor-pointer text-black text-xl ml-5">
