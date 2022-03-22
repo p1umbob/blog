@@ -5,7 +5,7 @@ date: "2022-03-22"
 
 ## ProxyHandler
 
-我们都知道 Proxy 能够捕获一些对对象的处理操作，并在这之上添加额外的逻辑。那么具体它是怎么
+我们都知道 Proxy 能够捕获一些对对象的处理操作，并在这之上添加额外的逻辑。那么具体它是怎么使用的，本文将作简要介绍。
 
 点开 typescript/liv/lib.es2015.proxy.d.ts 能够找到 ProxyHandler 中的对应接口：
 
