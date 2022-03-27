@@ -3,14 +3,17 @@ import React, { useEffect } from "react";
 import { Layout } from "../../layout/layout";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
-
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css";
 const Blogpost: any = ({ post, morePosts, preview }: any) => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     // return <ErrorPage statusCode={404} />;
   }
   console.log(post);
-
+  useEffect(() => {
+    hljs.initHighlighting();
+  }, []);
   return (
     <Layout>
       <h1
