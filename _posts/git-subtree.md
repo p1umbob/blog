@@ -29,9 +29,9 @@ date: "2022-02-19"
 
 ### 第二步：创建本地目录
 
-语法：`git subtree add --prefix=<子目录名> <子仓库名> <分支> --squash
+语法：`git subtree add --prefix=<子目录名> <子仓库名> <分支> --squash`
 
-示例：`git subtree add --prefix=out component master --squash
+示例：`git subtree add --prefix=out component master --squash`
 
 `git subtree add` 会在本地新建一个叫 out 的文件夹，`--squash` 会把 subtree 上的改动合并成一次 commit
 
