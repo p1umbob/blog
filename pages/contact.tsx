@@ -9,7 +9,7 @@ const Contact: any = ({ allPosts }: any) => {
     <Layout>
       <section className="my-5">
         <p>
-          Github: <a href={"https://github.com/pzij"}>Johan Pan</a>
+          Github: <a href={"https://github.com/pzij"}>Johnny Pan</a>
         </p>
       </section>
     </Layout>

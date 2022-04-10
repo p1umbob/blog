@@ -13,7 +13,7 @@ const Home: any = ({ allPosts }: any) => {
     <Layout>
       <section className="my-5">
         <p>
-          Personal blog by <a href={"https://github.com/pzij"}>Johan Pan</a>.
+          Personal blog by <a href={"https://github.com/pzij"}>Johnny Pan</a>.
         </p>
         <p>I learn and share.</p>
       </section>

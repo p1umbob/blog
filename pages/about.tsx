@@ -9,13 +9,18 @@ const About: any = ({ allPosts }: any) => {
     <Layout>
       <section className="my-5">
         <p>
-          Ciao! I am <a href={"https://github.com/pzij"}>Johan Pan</a> from
-          China, currently working as a web developer at Trip.com.
+          Hi, I am <a href={"https://github.com/pzij"}>Johnny Pan</a> from
+          China, currently (2022) working as a web developer at Trip.com.
         </p>
+        <br />
         <p>
           I am interested in design and web development, rich-text editor and
-          web graphics. I also enjoy spending my time with my guitar, my
-          skateboard and my PS4.
+          web graphics.
+        </p>
+        <br />
+        <p>
+          I also enjoy spending my time with my guitar, my skateboard and my
+          PS4.
         </p>
       </section>
     </Layout>
