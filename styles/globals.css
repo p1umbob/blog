@@ -4,12 +4,13 @@
 
 :root {
   --main-bg-color: pink;
-  --code-background-inline: #f0f0f4;
-  --text-secondary: #5b5b66;
+  --code-background-inline: rgba(91, 255, 156, 0.2);
+  --text-secondary: #000;
   --elem-radius: 0.25rem;
   --font-code: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
     monospace;
   --type-code-regular: 400 0.875rem/1.5 var(--font-code);
+  --pre-bg: #011627;
 }
 
 html,
@@ -61,7 +62,7 @@ a:hover {
   list-style-type: circle;
 }
 
-.blog-post-container code {
+.blog-post-container :not(pre) code {
   color: var(--text-secondary);
   background: var(--code-background-inline);
   padding: 0.125rem 0.25rem;
@@ -72,6 +73,7 @@ a:hover {
 pre {
   border-radius: var(--elem-radius);
   font: var(--type-code-regular);
+  background-color: var(--pre-bg);
   margin: 1rem 0;
 }
 

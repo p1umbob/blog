@@ -7,6 +7,8 @@ import { Layout } from "../layout/layout";
 const Contact: any = ({ allPosts }: any) => {
   return (
     <Layout>
+      <title>Contact | J.P.</title>
+
       <section className="my-5">
         <p>
           Github: <a href={"https://github.com/pzij"}>Johnny Pan</a>

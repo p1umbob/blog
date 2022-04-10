@@ -11,6 +11,8 @@ const Home: any = ({ allPosts }: any) => {
 
   return (
     <Layout>
+      <title>{`Johnny Pan's bunker | J.P.`}</title>
+
       <section className="my-5">
         <p>
           Personal blog by <a href={"https://github.com/pzij"}>Johnny Pan</a>.

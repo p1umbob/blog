@@ -7,6 +7,8 @@ import { Layout } from "../layout/layout";
 const About: any = ({ allPosts }: any) => {
   return (
     <Layout>
+      <title>About | J.P.</title>
+
       <section className="my-5">
         <p>
           Hi, I am <a href={"https://github.com/pzij"}>Johnny Pan</a> from

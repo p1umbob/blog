@@ -4,7 +4,8 @@ import { Layout } from "../../layout/layout";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
+import "highlight.js/styles/tokyo-night-dark.css";
+
 const Blogpost: any = ({ post, morePosts, preview }: any) => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
@@ -16,9 +17,10 @@ const Blogpost: any = ({ post, morePosts, preview }: any) => {
   }, []);
 
   const random = parseInt(post.slug, 36).toString(16).slice(0, 6);
-  console.log("random", random);
+
   return (
     <Layout>
+      <title>{post?.title} | J.P.</title>
       <h1
         className="text-3xl flex justify-center items-center underline"
         style={{
