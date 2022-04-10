@@ -36,7 +36,7 @@ const Blogpost: any = ({ post, morePosts, preview }: any) => {
           __html: post.content,
         }}
       ></div>
-      <hr className="hr-fade-content" data-content={`< ${post.title} />`}></hr>
+      <hr className="hr-fade-content" data-content={`</ ${post.title} >`}></hr>
     </Layout>
   );
 };
