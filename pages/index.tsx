@@ -21,7 +21,7 @@ const Home: any = ({ allPosts }: any) => {
       {allPosts.map((post: any) => (
         <div className="blogpost-wrap my-5 text-xl" key={post.slug}>
           <Link href={`blog/${post.slug}`}>
-            <a className="underline decoration-solid decoration-pink-500/50">
+            <a>
               {post.title} <span>— {post.date}</span>
             </a>
           </Link>

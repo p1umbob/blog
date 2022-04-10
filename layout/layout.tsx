@@ -6,7 +6,7 @@ import img from "../public/qun.png";
 export const Layout = ({ children }: any) => (
   <div className="container mx-auto">
     <div
-      className=""
+      className="mb-32"
       // style={{
       //   margin: "3rem auto",
       //   maxWidth: 650,

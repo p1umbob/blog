@@ -14,13 +14,15 @@ const Blogpost: any = ({ post, morePosts, preview }: any) => {
   useEffect(() => {
     hljs.initHighlighting();
   }, []);
+
+  const random = parseInt(post.slug, 36).toString(16).slice(0, 6);
+  console.log("random", random);
   return (
     <Layout>
       <h1
         className="text-3xl flex justify-center items-center underline"
         style={{
-          textDecorationColor:
-            "#" + Math.floor(Math.random() * 16777215).toString(16),
+          textDecorationColor: "#" + random,
         }}
       >
         {post.title}
@@ -32,6 +34,7 @@ const Blogpost: any = ({ post, morePosts, preview }: any) => {
           __html: post.content,
         }}
       ></div>
+      <hr className="hr-fade-content" data-content={`< ${post.title} />`}></hr>
     </Layout>
   );
 };
