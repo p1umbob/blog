@@ -53,13 +53,20 @@ a:hover {
 }
 
 .blog-post-container p,
-.blog-post-container ul {
+.blog-post-container ul,
+.blog-post-container ol {
   margin-bottom: 1.2rem;
   line-height: 1.75;
 }
 
 .blog-post-container ul {
   list-style-type: circle;
+  margin-left: 1em;
+}
+
+.blog-post-container ol {
+  list-style-type: auto;
+  margin-left: 1em;
 }
 
 .blog-post-container :not(pre) code {
@@ -75,6 +82,10 @@ pre {
   font: var(--type-code-regular);
   background-color: var(--pre-bg);
   margin: 1rem 0;
+}
+
+pre code.hljs {
+  border-radius: var(--elem-radius);
 }
 
 hr.hr-fade-content {

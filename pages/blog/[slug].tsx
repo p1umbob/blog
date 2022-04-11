@@ -4,7 +4,7 @@ import { Layout } from "../../layout/layout";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 import hljs from "highlight.js";
-import "highlight.js/styles/tokyo-night-dark.css";
+import "highlight.js/styles/nord.css";
 
 const Blogpost: any = ({ post, morePosts, preview }: any) => {
   const router = useRouter();
