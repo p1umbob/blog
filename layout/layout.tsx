@@ -24,7 +24,7 @@ export const Layout = ({ children }: any) => (
         //   paddingBottom: "2rem",
         // }}
       >
-        <div className="logo ml-8 flex justify-start items-center cursor-pointer">
+        <div className="logo ml-8 flex justify-start items-center cursor-pointer hover:shadow-lg hover:shadow-gray-300">
           <Link href="/" passHref>
             <Image
               loader={({ src }) => {
