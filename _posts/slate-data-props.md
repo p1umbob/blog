@@ -160,7 +160,7 @@ Uncaught Error: Cannot resolve a Slate node from DOM node: [object HTMLDivElemen
     at editable.tsx:761:1
 ```
 
-这是因为通过事件获取到的 DOM 节点在 `ELEMENT_TO_NODE` 弱映射中**没有对应的键值对**，所以会导致无法从 DOM 元素中映射到对应的 node 节点。
+这是因为通过事件获取到的 DOM 节点在 `ELEMENT_TO_NODE` 弱映射中**没有对应的键值对**，所以会导致无法从 DOM 元素中映射到对应的 Slate 节点。
 
 在实践中，我们为特定节点添加了自定义的 `data-ignore-slate` 属性，这样就能够在调用 `toSlateNode()` 的时候对含有该属性的节点进行**过滤**，避免报错。
 
