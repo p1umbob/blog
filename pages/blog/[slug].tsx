@@ -4,7 +4,7 @@ import { Layout } from "../../layout/layout";
 import { getAllPosts, getPostBySlug } from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 import hljs from "highlight.js";
-import "highlight.js/styles/nord.css";
+import "highlight.js/styles/github.css";
 
 const Blogpost: any = ({ post, morePosts, preview }: any) => {
   const router = useRouter();
@@ -44,15 +44,7 @@ const Blogpost: any = ({ post, morePosts, preview }: any) => {
 export default Blogpost;
 
 export async function getStaticProps({ params }: any) {
-  const post = getPostBySlug(params.slug, [
-    "title",
-    "date",
-    "slug",
-    "author",
-    "content",
-    "ogImage",
-    "coverImage",
-  ]);
+  const post = getPostBySlug(params.slug, ["title", "date", "slug", "author", "content", "ogImage", "coverImage"]);
   const content = await markdownToHtml(post.content || "");
 
   return {
