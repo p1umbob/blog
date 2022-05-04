@@ -4,7 +4,7 @@ import React from "react";
 import img from "../public/qun.png";
 
 export const Layout = ({ children }: any) => (
-  <div className="container mx-auto">
+  <div className="container mx-auto px-[5vw] max-w-screen-xl">
     <div
       className="mb-32"
       // style={{
@@ -24,7 +24,7 @@ export const Layout = ({ children }: any) => (
         //   paddingBottom: "2rem",
         // }}
       >
-        <div className="logo ml-8 flex justify-start items-center cursor-pointer hover:shadow-lg hover:shadow-gray-300">
+        <div className="logo ml-8 flex justify-start items-center cursor-pointer scale-110 transition-transform hover:scale-125">
           <Link href="/" passHref>
             <Image
               loader={({ src }) => {
