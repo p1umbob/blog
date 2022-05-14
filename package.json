@@ -7,10 +7,11 @@
     "start": "next start",
     "export": "next build && next export",
     "lint": "next lint",
-    "deploy": "set NODE_ENV=production && next build && next export && touch ./out/.nojekyll && git add out/ -f && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
+    "deployWin": "next build && next export && touch ./out/.nojekyll && git add out/ -f && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages",
+    "deploy": "NODE_ENV=production next build && next export && touch ./out/.nojekyll && git add out/ -f && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
   },
   "engines": {
-    "node": ">14"
+    "node": ">15.0.0"
   },
   "dependencies": {
     "classnames": "^2.3.1",
