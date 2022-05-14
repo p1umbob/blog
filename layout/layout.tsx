@@ -24,7 +24,7 @@ export const Layout = ({ children }: any) => (
         //   paddingBottom: "2rem",
         // }}
       >
-        <div className="logo ml-8 flex justify-start items-center cursor-pointer scale-110 transition-transform hover:scale-125">
+        <div className="logo ml-8 flex justify-start items-center cursor-pointer scale-110 transition-transform hover:scale-105">
           <Link href="/" passHref>
             <Image
               loader={({ src }) => {
