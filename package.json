@@ -7,7 +7,11 @@
     "start": "next start",
     "export": "next build && next export",
     "lint": "next lint",
+    "deployWin": "set NODE_ENV=production && next build && next export && type NUL > ./out/.nojekyll && git add out/ -f && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages",
     "deploy": "NODE_ENV=production next build && next export && touch ./out/.nojekyll && git add out/ -f && git commit -m \"Deploy gh-pages\" && git subtree push --prefix out origin gh-pages"
+  },
+  "engines": {
+    "node": ">15.0.0"
   },
   "dependencies": {
     "classnames": "^2.3.1",
@@ -21,6 +25,7 @@
     "remark-html": "^15.0.1"
   },
   "devDependencies": {
+    "@types/highlight.js": "^10.1.0",
     "@types/node": "17.0.17",
     "@types/react": "17.0.39",
     "autoprefixer": "^10.4.2",

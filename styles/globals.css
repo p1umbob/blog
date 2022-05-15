@@ -7,8 +7,7 @@
   --code-background-inline: rgba(91, 255, 156, 0.2);
   --text-secondary: #000;
   --elem-radius: 0.25rem;
-  --font-code: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
-    monospace;
+  --font-code: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
   --type-code-regular: 400 0.875rem/1.5 var(--font-code);
   --pre-bg: #011627;
 }
@@ -17,8 +16,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
 }
 
 a {
@@ -80,12 +79,13 @@ a:hover {
 pre {
   border-radius: var(--elem-radius);
   font: var(--type-code-regular);
-  background-color: var(--pre-bg);
+  /* background-color: var(--pre-bg); */
   margin: 1rem 0;
 }
 
 pre code.hljs {
   border-radius: var(--elem-radius);
+  font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Liberation Mono", Menlo, Monaco, Consolas, monospace;
 }
 
 hr.hr-fade-content {
@@ -95,12 +95,7 @@ hr.hr-fade-content {
   padding: 1em 0;
   position: relative;
   margin-top: 4em;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black,
-    transparent
-  );
+  -webkit-mask-image: linear-gradient(to right, transparent, black, transparent);
   mask-image: linear-gradient(to right, transparent, black, transparent);
 }
 

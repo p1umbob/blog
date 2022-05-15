@@ -1,4 +1,9 @@
-# 从 Slate 的内置特性到洋葱模型
+---
+title: "从 Slate 的内置特性到洋葱模型"
+date: "2022-04-15"
+---
+
+<!-- # 从 Slate 的内置特性到洋葱模型 -->
 
 ## Slate 的属性 props 和特性 attributes
 
@@ -78,7 +83,7 @@ Slate 中涉及到自定义组件或者自定义文本节点属性，这时候�
 function App() {
   const editor = useMemo(() => withReact(createEditor()), []);
   const [value, setValue] = useState([
-   {
+    {
       type: "paragraph",
       children: [
         {
@@ -102,11 +107,9 @@ function App() {
 
   const DefaultElement = ({ children, element, attributes }) => {
     if (element.type === "block-quote") {
-      return (
-        <blockquote style={{ fontFamily: "fantasy" }}>{children}</blockquote>
-      );
+      return <blockquote style={{ fontFamily: "fantasy" }}>{children}</blockquote>;
     }
-    return (<div {...attributes}>{children}</div>);
+    return <div {...attributes}>{children}</div>;
   };
 
   return (
@@ -126,22 +129,18 @@ export default App;
 我们将上述的 `DefaultElement` 重写为：
 
 ```jsx
-  const DefaultElement = ({ children, element, attributes }) => {
-    if (element.type === "block-quote") {
-      return (
-        <blockquote
-          data-slate-node="text"
-          ref={attributes.ref}
-          style={{ fontFamily: "fantasy" }}
-        >
-          <span data-slate-leaf="true" contenteditable="true">
-            <span data-slate-string="true">{children[0].props.text.text}</span>
-          </span>
-        </blockquote>
-      );
-    }
-    return <div {...attributes}>{children}</div>;
-  };
+const DefaultElement = ({ children, element, attributes }) => {
+  if (element.type === "block-quote") {
+    return (
+      <blockquote data-slate-node="text" ref={attributes.ref} style={{ fontFamily: "fantasy" }}>
+        <span data-slate-leaf="true" contenteditable="true">
+          <span data-slate-string="true">{children[0].props.text.text}</span>
+        </span>
+      </blockquote>
+    );
+  }
+  return <div {...attributes}>{children}</div>;
+};
 ```
 
 重写后的 `block-quote` 组件实际上和渲染出来的 DOM 结构层级几乎一致，将组件的渲染结果直接返回。其层级结构符合 Slate 的洋葱模型。
@@ -165,7 +164,7 @@ Uncaught Error: Cannot resolve a Slate node from DOM node: [object HTMLDivElemen
 在实践中，我们为特定节点添加了自定义的 `data-ignore-slate` 属性，这样就能够在调用 `toSlateNode()` 的时候对含有该属性的节点进行**过滤**，避免报错。
 
 ```js
-if(domNode?.hasAttribute?.("data-ignore-slate")) return
+if (domNode?.hasAttribute?.("data-ignore-slate")) return;
 ```
 
 ## 总结
