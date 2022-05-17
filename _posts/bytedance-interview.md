@@ -18,7 +18,7 @@ date: "2022-05-14"
   - React 的 class 和 hooks 的区别 (没答好，生命周期、static 函数等)
   - type 和 interface 的区别 (没答好，interface 支持声明合并，能够被 class 实现；type 可以给基础类型起别名)
 - CSS
-  - 对 BFC 的了解，如何设置 BFC
+  - 对 BFC 的了解，如何设置 BFC (display: flex/inline/table-cell, positon: relative/absolute/fixed, overflow: hidden/scroll, float: left/right)
   - flex 布局有哪些属性，简写 flex: 1 的含义 (没答好，1 1 0%)
   - 页面中如何隐藏一个元素 (display, visibility, opacity+point-events, scale(0), left&top: -9999999px)
 - 网络
