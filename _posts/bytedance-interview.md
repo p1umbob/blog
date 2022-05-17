@@ -73,8 +73,8 @@ date: "2022-05-14"
     - 将状态放在子组件内部进行管理
     - 使用 MobX 或者 Redux 管理状态
   - SharedWorker 之间传输大体积数据
-    - 不熟悉，说了些自己的认识，通过流来实现的
-    - 面试官说是通过 Typed Array 来实现的，可以用来传输大体积数据
+    - 不熟悉，说了些自己的认识，我说是通过流来实现的。
+    - 正确答案是 [SharedArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer)，实现在主线程和 worker 线程之间的共享内存。
   - WebAssembly 和 Worker 对性能的优化
     - 前者优化了一些 JS 瓶颈部分，比如使用底层语言对内存有更充分的控制
     - 后者主要就是处理一些可被并行计算的耗性能部分
