@@ -6,10 +6,10 @@
   --main-bg-color: pink;
   --code-background-inline: rgba(91, 255, 156, 0.2);
   --text-secondary: #000;
-  --elem-radius: 0.25rem;
+  --elem-radius: 3px;
   --font-code: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
   --type-code-regular: 400 0.875rem/1.5 var(--font-code);
-  --pre-bg: #011627;
+  --pre-bg: #f8f8f8;
 }
 
 html,
@@ -68,6 +68,14 @@ a:hover {
   margin-left: 1em;
 }
 
+.blog-post-container blockquote {
+  border-left: 2px solid #5d44ff;
+  padding: 0 0 0 10px;
+  color: #6b6b6b;
+  background-color: #297bc20f;
+  border-radius: 2px;
+}
+
 .blog-post-container :not(pre) code {
   color: var(--text-secondary);
   background: var(--code-background-inline);
@@ -79,13 +87,13 @@ a:hover {
 pre {
   border-radius: var(--elem-radius);
   font: var(--type-code-regular);
-  /* background-color: var(--pre-bg); */
   margin: 1rem 0;
 }
 
 pre code.hljs {
   border-radius: var(--elem-radius);
   font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Liberation Mono", Menlo, Monaco, Consolas, monospace;
+  background-color: var(--pre-bg);
 }
 
 hr.hr-fade-content {
