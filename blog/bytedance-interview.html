@@ -1,122 +1,197 @@
-<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><link rel="preload" href="/_next/static/css/fccca114245daf4b.css" as="style"/><link rel="stylesheet" href="/_next/static/css/fccca114245daf4b.css" data-n-g=""/><link rel="preload" href="/_next/static/css/c2a527101433f11d.css" as="style"/><link rel="stylesheet" href="/_next/static/css/c2a527101433f11d.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script><script src="/_next/static/chunks/webpack-69bfa6990bb9e155.js" defer=""></script><script src="/_next/static/chunks/framework-6e4ba497ae0c8a3f.js" defer=""></script><script src="/_next/static/chunks/main-101cfeaa18eb0e64.js" defer=""></script><script src="/_next/static/chunks/pages/_app-ca6aae25bc99a05f.js" defer=""></script><script src="/_next/static/chunks/61-741c7743b5979a7a.js" defer=""></script><script src="/_next/static/chunks/964-e2167bad81babf73.js" defer=""></script><script src="/_next/static/chunks/pages/blog/%5Bslug%5D-f7b864b67c52940a.js" defer=""></script><script src="/_next/static/gC1AYC6CipSNwF7vgnhMM/_buildManifest.js" defer=""></script><script src="/_next/static/gC1AYC6CipSNwF7vgnhMM/_ssgManifest.js" defer=""></script><script src="/_next/static/gC1AYC6CipSNwF7vgnhMM/_middlewareManifest.js" defer=""></script></head><body><div id="__next" data-reactroot=""><div class="container mx-auto px-[5vw] max-w-screen-xl"><div class="mb-32"><header class="flex justify-between items-center my-10 h-52 bg-no-repeat bg-center"><div class="logo ml-8 flex justify-start items-center cursor-pointer scale-110 transition-transform hover:scale-105"><span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%"><span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%"><img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2772%27%20height=%2772%27/%3e"/></span><img alt="Jun" href="/" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"/><noscript><img alt="Jun" href="/" srcSet="https://pzij.github.io/qun.png 1x, https://pzij.github.io/qun.png 2x" src="https://pzij.github.io/qun.png" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" loading="lazy"/></noscript></span></div><ul class="list-none float-right mr-8"><span class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light" href="/">Home</span><span class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light" href="/about">About</span><span class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light" href="/contact">Contact</span></ul></header><title>一年半前端参加字节社招的复盘<!-- --> | J.P.</title><h1 class="text-3xl flex justify-center items-center underline" style="text-decoration-color:#1eb47f">一年半前端参加字节社招的复盘</h1><div class="blog-post-container"><h2>一面</h2>
-<p>这次的面试机会其实十分偶然，当时我只是更新了一下简历，并表明自己只是“看看机会”，但是却收到了 HR 的一面邀请。</p>
-<p>因为工作地点离家近，当时抱着 ~~试一试~~ “流水不腐，户枢不蠹”的心态，粗略准备两天就上了战场。几乎是“裸面”。</p>
-<p>面试官看上去很年轻，简单让我介绍了自己的情况之后，就开始了考察。</p>
-<ul>
-<li>项目
-<ul>
-<li>解决过哪些难点</li>
-</ul>
-</li>
-<li>JS
-<ul>
-<li>闭包的了解</li>
-<li>React 的 class 和 hooks 的区别 (没答好，生命周期、static 函数等)</li>
-<li>type 和 interface 的区别 (没答好，interface 支持声明合并，能够被 class 实现；type 可以给基础类型起别名)</li>
-</ul>
-</li>
-<li>CSS
-<ul>
-<li>对 BFC 的了解，如何设置 BFC (display: flex/inline/table-cell, positon: relative/absolute/fixed, overflow: hidden/scroll, float: left/right)</li>
-<li>flex 布局有哪些属性，简写 flex: 1 的含义 (没答好，1 1 0%)</li>
-<li>页面中如何隐藏一个元素 (display, visibility, opacity+point-events, scale(0), left&#x26;top: -9999999px)</li>
-</ul>
-</li>
-<li>网络
-<ul>
-<li>HTTPS 和 HTTP 的区别 (没答好，多了 SSL/TLS 层，需要 CA 颁发的电子证书避免中间人攻击，需要先进行非对称加密传输随机数，然后再使用该随机数进行对称加密传输)</li>
-<li>缓存的 header (强缓存: cache-control:max-age &#x26; expires -> 弱缓存: Etag &#x26; Last-Modified &#x26; 304)</li>
-<li>有哪些 HTTP 的状态码 (400 Bad Gateway, 401 Unauthorized, 403 Forbidden, 404 Not Found, 500 Internal Server Error)</li>
-</ul>
-</li>
-<li>算法题
-<ul>
-<li>通过一个包含访问符的字符串取出给定对象的对应属性值，如: 给定 <code>a</code> 对象，传入<code>'a.b.c'</code> 取出 a.b.c 对象的值。通过正则解决。</li>
-<li>实现异步函数链式调用 (Promise.then)</li>
-<li>存在两个数组，判断两个数组之间的三种关系: 包含、相等、被包含 (先排序，然后双指针遍历)</li>
-</ul>
-</li>
-</ul>
-<p>这次八股文啃老本，评价基础不好，好在算法 ~~在面试官提示下~~ 都做了出来，整个面试时长达 2h。</p>
-<h2>二面</h2>
-<p>五一后，面试过了，约了二面。</p>
-<p>面试官做核酸去了，临时换了个面试官。不过算是按时开始了。</p>
-<p>这次着重问了些个人项目的问题，包括协同编辑，还有一些个人关注的前端领域。</p>
-<ul>
-<li>JS
-<ul>
-<li>协同编辑的实现方案 (CRDT)</li>
-<li>webpack 为什么比 ESBuild 慢 (Webpack 查找依赖的链路较长，ESBuild 依赖了浏览器的 ESM 模块化，局部动态加载快，go 语言的实现)</li>
-<li>useState 的状态更新（通常放在 <code>Promise.resovle</code> 批量微任务队列里更新，放在如 <code>setTimeout</code> 宏任务里就同步更新）</li>
-<li>eventLoop 的概念，宏任务、微任务、nextTick 队列，异步任务，异步任务的优先级，异步任务的执行时机</li>
-</ul>
-</li>
-<li>算法
-<ul>
-<li>实现一个 Promise.all （没做好，需要用一个 <code>result</code> 数组存结果，一个 <code>count</code> 在<code>promises[i]</code> 的 <code>then</code> 里计数并把结果存到 <code>result[i]</code> 中，<code>count</code> 等于 <code>promises</code> 的长度时，就输出 <code>result</code>——也可用 <code>reduce</code>，原理一样)</li>
-<li>继承方式有哪些，没做好，假设 A 继承 B
-<ol>
-<li>原型继承 (<code>A.prototype = new B()</code>)</li>
-<li>构造函数继承 (<code>B.call(this)</code>)</li>
-<li>组合继承 = 原型继承 + 构造函数继承</li>
-<li><code>class</code> 的 <code>extends</code> 关键字用到的继承: 寄生组合继承</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<p>面了 1h ，网络遇到了一些问题，显示面试结束了。复盘并和 HR 沟通后，希望重新面试，希望更好地表现自己。</p>
-<h2>三面</h2>
-<p>二面次日，意外收到面试通过的通知。约了周五晚上的面试。</p>
-<p>先介绍了自己的富文本编辑器项目，问了些文档数据存储结构、CRDT、合并数据等相关的问题。</p>
-<ul>
-<li>JS
-<ul>
-<li>内容多的页面如何优化滚动性能
-<ul>
-<li>对可中断的事件监听器设置 <code>passive: true</code> 使得事件监听流程可被打断，优先处理滚动事件，提高流畅度</li>
-<li>虚拟滚动，减少多余的 DOM 节点，提高性能</li>
-</ul>
-</li>
-<li>通过哪些指标衡量渲染性能
-<ul>
-<li>Performance 查看火焰图分析</li>
-<li>JS 埋点</li>
-</ul>
-</li>
-<li>怎么避免重复渲染
-<ul>
-<li><code>useMemo</code> 或 <code>React.memo</code> 缓存</li>
-<li>将状态放在子组件内部进行管理</li>
-<li>使用 MobX 或者 Redux 管理状态</li>
-</ul>
-</li>
-<li>SharedWorker 之间传输大体积数据
-<ul>
-<li>不熟悉，说了些自己的认识，我说是通过流来实现的。</li>
-<li>正确答案是 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer">SharedArrayBuffer</a>，实现在主线程和 worker 线程之间的共享内存。</li>
-</ul>
-</li>
-<li>WebAssembly 和 Worker 对性能的优化
-<ul>
-<li>前者优化了一些 JS 瓶颈部分，比如使用底层语言对内存有更充分的控制</li>
-<li>后者主要就是处理一些可被并行计算的耗性能部分</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法
-<ul>
-<li>传入一个对象，key 为模块名，value 为该模块的依赖数组。以数组形式输出模块的加载顺序 (没有依赖或者依赖全已满足即可输出)。
-<ul>
-<li>递归遍历</li>
-<li>每次递归都记录上一次加载的模块，并在下一次处理中清除掉该已加载过的模块。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>面试经历了 1.5h，聊了很多 web 的优化方面。算法在提示下才 debug 出来，做了半个多小时。</p>
-<p>不过自我感受还是 ok 的，最后我问了一些关于团队所做的 to B 业务详情以及公司的情况。</p>
-<p>工作一年半，相比当时校招的生涩，现在对自己多了一份自信，每次面试也都在见证着自己的成长。特此总结和分享。</p>
-</div><hr class="hr-fade-content" data-content="&lt;/ 一年半前端参加字节社招的复盘 &gt;"/></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"post":{"title":"一年半前端参加字节社招的复盘","date":"2022-05-14","slug":"bytedance-interview","content":"\u003ch2\u003e一面\u003c/h2\u003e\n\u003cp\u003e这次的面试机会其实十分偶然，当时我只是更新了一下简历，并表明自己只是“看看机会”，但是却收到了 HR 的一面邀请。\u003c/p\u003e\n\u003cp\u003e因为工作地点离家近，当时抱着 ~~试一试~~ “流水不腐，户枢不蠹”的心态，粗略准备两天就上了战场。几乎是“裸面”。\u003c/p\u003e\n\u003cp\u003e面试官看上去很年轻，简单让我介绍了自己的情况之后，就开始了考察。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e项目\n\u003cul\u003e\n\u003cli\u003e解决过哪些难点\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eJS\n\u003cul\u003e\n\u003cli\u003e闭包的了解\u003c/li\u003e\n\u003cli\u003eReact 的 class 和 hooks 的区别 (没答好，生命周期、static 函数等)\u003c/li\u003e\n\u003cli\u003etype 和 interface 的区别 (没答好，interface 支持声明合并，能够被 class 实现；type 可以给基础类型起别名)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCSS\n\u003cul\u003e\n\u003cli\u003e对 BFC 的了解，如何设置 BFC (display: flex/inline/table-cell, positon: relative/absolute/fixed, overflow: hidden/scroll, float: left/right)\u003c/li\u003e\n\u003cli\u003eflex 布局有哪些属性，简写 flex: 1 的含义 (没答好，1 1 0%)\u003c/li\u003e\n\u003cli\u003e页面中如何隐藏一个元素 (display, visibility, opacity+point-events, scale(0), left\u0026#x26;top: -9999999px)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e网络\n\u003cul\u003e\n\u003cli\u003eHTTPS 和 HTTP 的区别 (没答好，多了 SSL/TLS 层，需要 CA 颁发的电子证书避免中间人攻击，需要先进行非对称加密传输随机数，然后再使用该随机数进行对称加密传输)\u003c/li\u003e\n\u003cli\u003e缓存的 header (强缓存: cache-control:max-age \u0026#x26; expires -\u003e 弱缓存: Etag \u0026#x26; Last-Modified \u0026#x26; 304)\u003c/li\u003e\n\u003cli\u003e有哪些 HTTP 的状态码 (400 Bad Gateway, 401 Unauthorized, 403 Forbidden, 404 Not Found, 500 Internal Server Error)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e算法题\n\u003cul\u003e\n\u003cli\u003e通过一个包含访问符的字符串取出给定对象的对应属性值，如: 给定 \u003ccode\u003ea\u003c/code\u003e 对象，传入\u003ccode\u003e'a.b.c'\u003c/code\u003e 取出 a.b.c 对象的值。通过正则解决。\u003c/li\u003e\n\u003cli\u003e实现异步函数链式调用 (Promise.then)\u003c/li\u003e\n\u003cli\u003e存在两个数组，判断两个数组之间的三种关系: 包含、相等、被包含 (先排序，然后双指针遍历)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e这次八股文啃老本，评价基础不好，好在算法 ~~在面试官提示下~~ 都做了出来，整个面试时长达 2h。\u003c/p\u003e\n\u003ch2\u003e二面\u003c/h2\u003e\n\u003cp\u003e五一后，面试过了，约了二面。\u003c/p\u003e\n\u003cp\u003e面试官做核酸去了，临时换了个面试官。不过算是按时开始了。\u003c/p\u003e\n\u003cp\u003e这次着重问了些个人项目的问题，包括协同编辑，还有一些个人关注的前端领域。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eJS\n\u003cul\u003e\n\u003cli\u003e协同编辑的实现方案 (CRDT)\u003c/li\u003e\n\u003cli\u003ewebpack 为什么比 ESBuild 慢 (Webpack 查找依赖的链路较长，ESBuild 依赖了浏览器的 ESM 模块化，局部动态加载快，go 语言的实现)\u003c/li\u003e\n\u003cli\u003euseState 的状态更新（通常放在 \u003ccode\u003ePromise.resovle\u003c/code\u003e 批量微任务队列里更新，放在如 \u003ccode\u003esetTimeout\u003c/code\u003e 宏任务里就同步更新）\u003c/li\u003e\n\u003cli\u003eeventLoop 的概念，宏任务、微任务、nextTick 队列，异步任务，异步任务的优先级，异步任务的执行时机\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e算法\n\u003cul\u003e\n\u003cli\u003e实现一个 Promise.all （没做好，需要用一个 \u003ccode\u003eresult\u003c/code\u003e 数组存结果，一个 \u003ccode\u003ecount\u003c/code\u003e 在\u003ccode\u003epromises[i]\u003c/code\u003e 的 \u003ccode\u003ethen\u003c/code\u003e 里计数并把结果存到 \u003ccode\u003eresult[i]\u003c/code\u003e 中，\u003ccode\u003ecount\u003c/code\u003e 等于 \u003ccode\u003epromises\u003c/code\u003e 的长度时，就输出 \u003ccode\u003eresult\u003c/code\u003e——也可用 \u003ccode\u003ereduce\u003c/code\u003e，原理一样)\u003c/li\u003e\n\u003cli\u003e继承方式有哪些，没做好，假设 A 继承 B\n\u003col\u003e\n\u003cli\u003e原型继承 (\u003ccode\u003eA.prototype = new B()\u003c/code\u003e)\u003c/li\u003e\n\u003cli\u003e构造函数继承 (\u003ccode\u003eB.call(this)\u003c/code\u003e)\u003c/li\u003e\n\u003cli\u003e组合继承 = 原型继承 + 构造函数继承\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003eclass\u003c/code\u003e 的 \u003ccode\u003eextends\u003c/code\u003e 关键字用到的继承: 寄生组合继承\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e面了 1h ，网络遇到了一些问题，显示面试结束了。复盘并和 HR 沟通后，希望重新面试，希望更好地表现自己。\u003c/p\u003e\n\u003ch2\u003e三面\u003c/h2\u003e\n\u003cp\u003e二面次日，意外收到面试通过的通知。约了周五晚上的面试。\u003c/p\u003e\n\u003cp\u003e先介绍了自己的富文本编辑器项目，问了些文档数据存储结构、CRDT、合并数据等相关的问题。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eJS\n\u003cul\u003e\n\u003cli\u003e内容多的页面如何优化滚动性能\n\u003cul\u003e\n\u003cli\u003e对可中断的事件监听器设置 \u003ccode\u003epassive: true\u003c/code\u003e 使得事件监听流程可被打断，优先处理滚动事件，提高流畅度\u003c/li\u003e\n\u003cli\u003e虚拟滚动，减少多余的 DOM 节点，提高性能\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e通过哪些指标衡量渲染性能\n\u003cul\u003e\n\u003cli\u003ePerformance 查看火焰图分析\u003c/li\u003e\n\u003cli\u003eJS 埋点\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e怎么避免重复渲染\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003euseMemo\u003c/code\u003e 或 \u003ccode\u003eReact.memo\u003c/code\u003e 缓存\u003c/li\u003e\n\u003cli\u003e将状态放在子组件内部进行管理\u003c/li\u003e\n\u003cli\u003e使用 MobX 或者 Redux 管理状态\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eSharedWorker 之间传输大体积数据\n\u003cul\u003e\n\u003cli\u003e不熟悉，说了些自己的认识，我说是通过流来实现的。\u003c/li\u003e\n\u003cli\u003e正确答案是 \u003ca href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer\"\u003eSharedArrayBuffer\u003c/a\u003e，实现在主线程和 worker 线程之间的共享内存。\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eWebAssembly 和 Worker 对性能的优化\n\u003cul\u003e\n\u003cli\u003e前者优化了一些 JS 瓶颈部分，比如使用底层语言对内存有更充分的控制\u003c/li\u003e\n\u003cli\u003e后者主要就是处理一些可被并行计算的耗性能部分\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e算法\n\u003cul\u003e\n\u003cli\u003e传入一个对象，key 为模块名，value 为该模块的依赖数组。以数组形式输出模块的加载顺序 (没有依赖或者依赖全已满足即可输出)。\n\u003cul\u003e\n\u003cli\u003e递归遍历\u003c/li\u003e\n\u003cli\u003e每次递归都记录上一次加载的模块，并在下一次处理中清除掉该已加载过的模块。\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e面试经历了 1.5h，聊了很多 web 的优化方面。算法在提示下才 debug 出来，做了半个多小时。\u003c/p\u003e\n\u003cp\u003e不过自我感受还是 ok 的，最后我问了一些关于团队所做的 to B 业务详情以及公司的情况。\u003c/p\u003e\n\u003cp\u003e工作一年半，相比当时校招的生涩，现在对自己多了一份自信，每次面试也都在见证着自己的成长。特此总结和分享。\u003c/p\u003e\n"}},"__N_SSG":true},"page":"/blog/[slug]","query":{"slug":"bytedance-interview"},"buildId":"gC1AYC6CipSNwF7vgnhMM","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="next-head-count" content="2" />
+  <link rel="preload" href="/_next/static/css/fccca114245daf4b.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/fccca114245daf4b.css" data-n-g="" />
+  <link rel="preload" href="/_next/static/css/c2a527101433f11d.css" as="style" />
+  <link rel="stylesheet" href="/_next/static/css/c2a527101433f11d.css" data-n-p="" /><noscript data-n-css=""></noscript>
+  <script defer="" nomodule="" src="/_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script>
+  <script src="/_next/static/chunks/webpack-69bfa6990bb9e155.js" defer=""></script>
+  <script src="/_next/static/chunks/framework-6e4ba497ae0c8a3f.js" defer=""></script>
+  <script src="/_next/static/chunks/main-101cfeaa18eb0e64.js" defer=""></script>
+  <script src="/_next/static/chunks/pages/_app-ca6aae25bc99a05f.js" defer=""></script>
+  <script src="/_next/static/chunks/61-741c7743b5979a7a.js" defer=""></script>
+  <script src="/_next/static/chunks/964-e2167bad81babf73.js" defer=""></script>
+  <script src="/_next/static/chunks/pages/blog/%5Bslug%5D-f7b864b67c52940a.js" defer=""></script>
+  <script src="/_next/static/gC1AYC6CipSNwF7vgnhMM/_buildManifest.js" defer=""></script>
+  <script src="/_next/static/gC1AYC6CipSNwF7vgnhMM/_ssgManifest.js" defer=""></script>
+  <script src="/_next/static/gC1AYC6CipSNwF7vgnhMM/_middlewareManifest.js" defer=""></script>
+</head>
+
+<body>
+  <div id="__next" data-reactroot="">
+    <div class="container mx-auto px-[5vw] max-w-screen-xl">
+      <div class="mb-32">
+        <header class="flex justify-between items-center my-10 h-52 bg-no-repeat bg-center">
+          <div
+            class="logo ml-8 flex justify-start items-center cursor-pointer scale-110 transition-transform hover:scale-105">
+            <span
+              style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%"><span
+                style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%"><img
+                  style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0"
+                  alt="" aria-hidden="true"
+                  src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2772%27%20height=%2772%27/%3e" /></span><img
+                alt="Jun" href="/" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                decoding="async" data-nimg="intrinsic"
+                style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" /><noscript><img
+                  alt="Jun" href="/" srcSet="https://pzij.github.io/qun.png 1x, https://pzij.github.io/qun.png 2x"
+                  src="https://pzij.github.io/qun.png" decoding="async" data-nimg="intrinsic"
+                  style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"
+                  loading="lazy" /></noscript></span></div>
+          <ul class="list-none float-right mr-8"><span
+              class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light"
+              href="/">Home</span><span
+              class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light"
+              href="/about">About</span><span
+              class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light"
+              href="/contact">Contact</span></ul>
+        </header>
+        <title>一年半前端参加字节社招的复盘
+          <!-- --> | J.P.
+        </title>
+        <h1 class="text-3xl flex justify-center items-center underline" style="text-decoration-color:#1eb47f">
+          一年半前端参加字节社招的复盘</h1>
+        <div class="blog-post-container">
+          <h2>一面</h2>
+          <p>这次的面试机会其实十分偶然，当时我只是更新了一下简历，并表明自己只是“看看机会”，但是却收到了 HR 的一面邀请。</p>
+          <p>因为工作地点离家近，当时抱着 ~~试一试~~ “流水不腐，户枢不蠹”的心态，粗略准备两天就上了战场。几乎是“裸面”。</p>
+          <p>面试官看上去很年轻，简单让我介绍了自己的情况之后，就开始了考察。</p>
+          <ul>
+            <li>项目
+              <ul>
+                <li>解决过哪些难点</li>
+              </ul>
+            </li>
+            <li>JS
+              <ul>
+                <li>闭包的了解</li>
+                <li>React 的 class 和 hooks 的区别 (没答好，生命周期、static 函数等)</li>
+                <li>type 和 interface 的区别 (没答好，interface 支持声明合并，能够被 class 实现；type 可以给基础类型起别名)</li>
+              </ul>
+            </li>
+            <li>CSS
+              <ul>
+                <li>对 BFC 的了解，如何设置 BFC (display: flex/inline/table-cell, positon: relative/absolute/fixed, overflow:
+                  hidden/scroll, float: left/right)</li>
+                <li>flex 布局有哪些属性，简写 flex: 1 的含义 (没答好，1 1 0%)</li>
+                <li>页面中如何隐藏一个元素 (display, visibility, opacity+point-events, scale(0), left&#x26;top: -9999999px)</li>
+              </ul>
+            </li>
+            <li>网络
+              <ul>
+                <li>HTTPS 和 HTTP 的区别 (没答好，多了 SSL/TLS 层，需要 CA 颁发的电子证书避免中间人攻击，需要先进行非对称加密传输随机数，然后再使用该随机数进行对称加密传输)</li>
+                <li>缓存的 header (强缓存: cache-control:max-age &#x26; expires -> 弱缓存: Etag &#x26; Last-Modified &#x26; 304)
+                </li>
+                <li>有哪些 HTTP 的状态码 (400 Bad Gateway, 401 Unauthorized, 403 Forbidden, 404 Not Found, 500 Internal Server
+                  Error)</li>
+              </ul>
+            </li>
+            <li>算法题
+              <ul>
+                <li>通过一个包含访问符的字符串取出给定对象的对应属性值，如: 给定 <code>a</code> 对象，传入<code>'a.b.c'</code> 取出 a.b.c 对象的值。通过正则解决。</li>
+                <li>实现异步函数链式调用 (Promise.then)</li>
+                <li>存在两个数组，判断两个数组之间的三种关系: 包含、相等、被包含 (先排序，然后双指针遍历)</li>
+              </ul>
+            </li>
+          </ul>
+          <p>这次八股文啃老本，评价基础不好，好在算法 ~~在面试官提示下~~ 都做了出来，整个面试时长达 2h。</p>
+          <h2>二面</h2>
+          <p>五一后，面试过了，约了二面。</p>
+          <p>面试官做核酸去了，临时换了个面试官。不过算是按时开始了。</p>
+          <p>这次着重问了些个人项目的问题，包括协同编辑，还有一些个人关注的前端领域。</p>
+          <ul>
+            <li>JS
+              <ul>
+                <li>协同编辑的实现方案 (CRDT)</li>
+                <li>webpack 为什么比 ESBuild 慢 (Webpack 查找依赖的链路较长，ESBuild 依赖了浏览器的 ESM 模块化，局部动态加载快，go 语言的实现)</li>
+                <li>useState 的状态更新（通常放在 <code>Promise.resovle</code> 批量微任务队列里更新，放在如 <code>setTimeout</code> 宏任务里就同步更新）
+                </li>
+                <li>eventLoop 的概念，宏任务、微任务、nextTick 队列，异步任务，异步任务的优先级，异步任务的执行时机</li>
+              </ul>
+            </li>
+            <li>算法
+              <ul>
+                <li>实现一个 Promise.all （没做好，需要用一个 <code>result</code> 数组存结果，一个 <code>count</code>
+                  在<code>promises[i]</code> 的 <code>then</code> 里计数并把结果存到 <code>result[i]</code> 中，<code>count</code> 等于
+                  <code>promises</code> 的长度时，就输出 <code>result</code>——也可用 <code>reduce</code>，原理一样)</li>
+                <li>继承方式有哪些，没做好，假设 A 继承 B
+                  <ol>
+                    <li>原型继承 (<code>A.prototype = new B()</code>)</li>
+                    <li>构造函数继承 (<code>B.call(this)</code>)</li>
+                    <li>组合继承 = 原型继承 + 构造函数继承</li>
+                    <li><code>class</code> 的 <code>extends</code> 关键字用到的继承: 寄生组合继承</li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p>面了 1h ，网络遇到了一些问题，显示面试结束了。复盘并和 HR 沟通后，希望重新面试，希望更好地表现自己。</p>
+          <h2>三面</h2>
+          <p>二面次日，意外收到面试通过的通知。约了周五晚上的面试。</p>
+          <p>先介绍了自己的富文本编辑器项目，问了些文档数据存储结构、CRDT、合并数据等相关的问题。</p>
+          <ul>
+            <li>JS
+              <ul>
+                <li>内容多的页面如何优化滚动性能
+                  <ul>
+                    <li>对可中断的事件监听器设置 <code>passive: true</code> 使得事件监听流程可被打断，优先处理滚动事件，提高流畅度</li>
+                    <li>虚拟滚动，减少多余的 DOM 节点，提高性能</li>
+                  </ul>
+                </li>
+                <li>通过哪些指标衡量渲染性能
+                  <ul>
+                    <li>Performance 查看火焰图分析</li>
+                    <li>JS 埋点</li>
+                  </ul>
+                </li>
+                <li>怎么避免重复渲染
+                  <ul>
+                    <li><code>useMemo</code> 或 <code>React.memo</code> 缓存</li>
+                    <li>将状态放在子组件内部进行管理</li>
+                    <li>使用 MobX 或者 Redux 管理状态</li>
+                  </ul>
+                </li>
+                <li>SharedWorker 之间传输大体积数据
+                  <ul>
+                    <li>不熟悉，说了些自己的认识，我说是通过流来实现的。</li>
+                    <li>正确答案是 <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer">SharedArrayBuffer</a>，实现在主线程和
+                      worker 线程之间的共享内存。</li>
+                  </ul>
+                </li>
+                <li>WebAssembly 和 Worker 对性能的优化
+                  <ul>
+                    <li>前者优化了一些 JS 瓶颈部分，比如使用底层语言对内存有更充分的控制</li>
+                    <li>后者主要就是处理一些可被并行计算的耗性能部分</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>算法
+              <ul>
+                <li>传入一个对象，key 为模块名，value 为该模块的依赖数组。以数组形式输出模块的加载顺序 (没有依赖或者依赖全已满足即可输出)。
+                  <ul>
+                    <li>递归遍历</li>
+                    <li>每次递归都记录上一次加载的模块，并在下一次处理中清除掉该已加载过的模块。</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p>面试经历了 1.5h，聊了很多 web 的优化方面。算法在提示下才 debug 出来，做了半个多小时。</p>
+          <p>不过自我感受还是 ok 的，最后我问了一些关于团队所做的 to B 业务详情以及公司的情况。</p>
+          <p>工作一年半，相比当时校招的生涩，现在对自己多了一份自信，每次面试也都在见证着自己的成长。特此总结和分享。</p>
+        </div>
+        <hr class="hr-fade-content" data-content="&lt;/ 一年半前端参加字节社招的复盘 &gt;" />
+      </div>
+    </div>
+  </div>
+  <script id="__NEXT_DATA__"
+    type="application/json">{"props":{"pageProps":{"post":{"title":"一年半前端参加字节社招的复盘","date":"2022-05-14","slug":"bytedance-interview","content":"\u003ch2\u003e一面\u003c/h2\u003e\n\u003cp\u003e这次的面试机会其实十分偶然，当时我只是更新了一下简历，并表明自己只是“看看机会”，但是却收到了 HR 的一面邀请。\u003c/p\u003e\n\u003cp\u003e因为工作地点离家近，当时抱着 ~~试一试~~ “流水不腐，户枢不蠹”的心态，粗略准备两天就上了战场。几乎是“裸面”。\u003c/p\u003e\n\u003cp\u003e面试官看上去很年轻，简单让我介绍了自己的情况之后，就开始了考察。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e项目\n\u003cul\u003e\n\u003cli\u003e解决过哪些难点\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eJS\n\u003cul\u003e\n\u003cli\u003e闭包的了解\u003c/li\u003e\n\u003cli\u003eReact 的 class 和 hooks 的区别 (没答好，生命周期、static 函数等)\u003c/li\u003e\n\u003cli\u003etype 和 interface 的区别 (没答好，interface 支持声明合并，能够被 class 实现；type 可以给基础类型起别名)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCSS\n\u003cul\u003e\n\u003cli\u003e对 BFC 的了解，如何设置 BFC (display: flex/inline/table-cell, positon: relative/absolute/fixed, overflow: hidden/scroll, float: left/right)\u003c/li\u003e\n\u003cli\u003eflex 布局有哪些属性，简写 flex: 1 的含义 (没答好，1 1 0%)\u003c/li\u003e\n\u003cli\u003e页面中如何隐藏一个元素 (display, visibility, opacity+point-events, scale(0), left\u0026#x26;top: -9999999px)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e网络\n\u003cul\u003e\n\u003cli\u003eHTTPS 和 HTTP 的区别 (没答好，多了 SSL/TLS 层，需要 CA 颁发的电子证书避免中间人攻击，需要先进行非对称加密传输随机数，然后再使用该随机数进行对称加密传输)\u003c/li\u003e\n\u003cli\u003e缓存的 header (强缓存: cache-control:max-age \u0026#x26; expires -\u003e 弱缓存: Etag \u0026#x26; Last-Modified \u0026#x26; 304)\u003c/li\u003e\n\u003cli\u003e有哪些 HTTP 的状态码 (400 Bad Gateway, 401 Unauthorized, 403 Forbidden, 404 Not Found, 500 Internal Server Error)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e算法题\n\u003cul\u003e\n\u003cli\u003e通过一个包含访问符的字符串取出给定对象的对应属性值，如: 给定 \u003ccode\u003ea\u003c/code\u003e 对象，传入\u003ccode\u003e'a.b.c'\u003c/code\u003e 取出 a.b.c 对象的值。通过正则解决。\u003c/li\u003e\n\u003cli\u003e实现异步函数链式调用 (Promise.then)\u003c/li\u003e\n\u003cli\u003e存在两个数组，判断两个数组之间的三种关系: 包含、相等、被包含 (先排序，然后双指针遍历)\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e这次八股文啃老本，评价基础不好，好在算法 ~~在面试官提示下~~ 都做了出来，整个面试时长达 2h。\u003c/p\u003e\n\u003ch2\u003e二面\u003c/h2\u003e\n\u003cp\u003e五一后，面试过了，约了二面。\u003c/p\u003e\n\u003cp\u003e面试官做核酸去了，临时换了个面试官。不过算是按时开始了。\u003c/p\u003e\n\u003cp\u003e这次着重问了些个人项目的问题，包括协同编辑，还有一些个人关注的前端领域。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eJS\n\u003cul\u003e\n\u003cli\u003e协同编辑的实现方案 (CRDT)\u003c/li\u003e\n\u003cli\u003ewebpack 为什么比 ESBuild 慢 (Webpack 查找依赖的链路较长，ESBuild 依赖了浏览器的 ESM 模块化，局部动态加载快，go 语言的实现)\u003c/li\u003e\n\u003cli\u003euseState 的状态更新（通常放在 \u003ccode\u003ePromise.resovle\u003c/code\u003e 批量微任务队列里更新，放在如 \u003ccode\u003esetTimeout\u003c/code\u003e 宏任务里就同步更新）\u003c/li\u003e\n\u003cli\u003eeventLoop 的概念，宏任务、微任务、nextTick 队列，异步任务，异步任务的优先级，异步任务的执行时机\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e算法\n\u003cul\u003e\n\u003cli\u003e实现一个 Promise.all （没做好，需要用一个 \u003ccode\u003eresult\u003c/code\u003e 数组存结果，一个 \u003ccode\u003ecount\u003c/code\u003e 在\u003ccode\u003epromises[i]\u003c/code\u003e 的 \u003ccode\u003ethen\u003c/code\u003e 里计数并把结果存到 \u003ccode\u003eresult[i]\u003c/code\u003e 中，\u003ccode\u003ecount\u003c/code\u003e 等于 \u003ccode\u003epromises\u003c/code\u003e 的长度时，就输出 \u003ccode\u003eresult\u003c/code\u003e——也可用 \u003ccode\u003ereduce\u003c/code\u003e，原理一样)\u003c/li\u003e\n\u003cli\u003e继承方式有哪些，没做好，假设 A 继承 B\n\u003col\u003e\n\u003cli\u003e原型继承 (\u003ccode\u003eA.prototype = new B()\u003c/code\u003e)\u003c/li\u003e\n\u003cli\u003e构造函数继承 (\u003ccode\u003eB.call(this)\u003c/code\u003e)\u003c/li\u003e\n\u003cli\u003e组合继承 = 原型继承 + 构造函数继承\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003eclass\u003c/code\u003e 的 \u003ccode\u003eextends\u003c/code\u003e 关键字用到的继承: 寄生组合继承\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e面了 1h ，网络遇到了一些问题，显示面试结束了。复盘并和 HR 沟通后，希望重新面试，希望更好地表现自己。\u003c/p\u003e\n\u003ch2\u003e三面\u003c/h2\u003e\n\u003cp\u003e二面次日，意外收到面试通过的通知。约了周五晚上的面试。\u003c/p\u003e\n\u003cp\u003e先介绍了自己的富文本编辑器项目，问了些文档数据存储结构、CRDT、合并数据等相关的问题。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eJS\n\u003cul\u003e\n\u003cli\u003e内容多的页面如何优化滚动性能\n\u003cul\u003e\n\u003cli\u003e对可中断的事件监听器设置 \u003ccode\u003epassive: true\u003c/code\u003e 使得事件监听流程可被打断，优先处理滚动事件，提高流畅度\u003c/li\u003e\n\u003cli\u003e虚拟滚动，减少多余的 DOM 节点，提高性能\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e通过哪些指标衡量渲染性能\n\u003cul\u003e\n\u003cli\u003ePerformance 查看火焰图分析\u003c/li\u003e\n\u003cli\u003eJS 埋点\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e怎么避免重复渲染\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003euseMemo\u003c/code\u003e 或 \u003ccode\u003eReact.memo\u003c/code\u003e 缓存\u003c/li\u003e\n\u003cli\u003e将状态放在子组件内部进行管理\u003c/li\u003e\n\u003cli\u003e使用 MobX 或者 Redux 管理状态\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eSharedWorker 之间传输大体积数据\n\u003cul\u003e\n\u003cli\u003e不熟悉，说了些自己的认识，我说是通过流来实现的。\u003c/li\u003e\n\u003cli\u003e正确答案是 \u003ca href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer\"\u003eSharedArrayBuffer\u003c/a\u003e，实现在主线程和 worker 线程之间的共享内存。\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eWebAssembly 和 Worker 对性能的优化\n\u003cul\u003e\n\u003cli\u003e前者优化了一些 JS 瓶颈部分，比如使用底层语言对内存有更充分的控制\u003c/li\u003e\n\u003cli\u003e后者主要就是处理一些可被并行计算的耗性能部分\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003e算法\n\u003cul\u003e\n\u003cli\u003e传入一个对象，key 为模块名，value 为该模块的依赖数组。以数组形式输出模块的加载顺序 (没有依赖或者依赖全已满足即可输出)。\n\u003cul\u003e\n\u003cli\u003e递归遍历\u003c/li\u003e\n\u003cli\u003e每次递归都记录上一次加载的模块，并在下一次处理中清除掉该已加载过的模块。\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e面试经历了 1.5h，聊了很多 web 的优化方面。算法在提示下才 debug 出来，做了半个多小时。\u003c/p\u003e\n\u003cp\u003e不过自我感受还是 ok 的，最后我问了一些关于团队所做的 to B 业务详情以及公司的情况。\u003c/p\u003e\n\u003cp\u003e工作一年半，相比当时校招的生涩，现在对自己多了一份自信，每次面试也都在见证着自己的成长。特此总结和分享。\u003c/p\u003e\n"}},"__N_SSG":true},"page":"/blog/[slug]","query":{"slug":"bytedance-interview"},"buildId":"gC1AYC6CipSNwF7vgnhMM","isFallback":false,"gsp":true,"scriptLoader":[]}</script>
+</body>
+
+</html>
