@@ -12,7 +12,7 @@ const About: any = ({ allPosts }: any) => {
       <section className="my-5">
         <p>
           Hi, I am <a href={"https://github.com/pzij"}>Johnny Pan</a> from
-          China, currently (2022) working as a web developer at Trip.com.
+          China, working as a web developer.
         </p>
         <br />
         <p>
