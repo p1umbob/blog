@@ -1,0 +1,414 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><meta name="next-head-count" content="2"/><link rel="preload" href="https://pzij.github.io/_next/static/css/40b8a65ab385b93c.css" as="style"/><link rel="stylesheet" href="https://pzij.github.io/_next/static/css/40b8a65ab385b93c.css" data-n-g=""/><link rel="preload" href="https://pzij.github.io/_next/static/css/c2a527101433f11d.css" as="style"/><link rel="stylesheet" href="https://pzij.github.io/_next/static/css/c2a527101433f11d.css" data-n-p=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="https://pzij.github.io/_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script><script src="https://pzij.github.io/_next/static/chunks/webpack-e09df0756682281e.js" defer=""></script><script src="https://pzij.github.io/_next/static/chunks/framework-6e4ba497ae0c8a3f.js" defer=""></script><script src="https://pzij.github.io/_next/static/chunks/main-101cfeaa18eb0e64.js" defer=""></script><script src="https://pzij.github.io/_next/static/chunks/pages/_app-ca6aae25bc99a05f.js" defer=""></script><script src="https://pzij.github.io/_next/static/chunks/61-741c7743b5979a7a.js" defer=""></script><script src="https://pzij.github.io/_next/static/chunks/964-e2167bad81babf73.js" defer=""></script><script src="https://pzij.github.io/_next/static/chunks/pages/blog/%5Bslug%5D-f7b864b67c52940a.js" defer=""></script><script src="https://pzij.github.io/_next/static/-AtGbS5MCSPpwy06olOgR/_buildManifest.js" defer=""></script><script src="https://pzij.github.io/_next/static/-AtGbS5MCSPpwy06olOgR/_ssgManifest.js" defer=""></script><script src="https://pzij.github.io/_next/static/-AtGbS5MCSPpwy06olOgR/_middlewareManifest.js" defer=""></script></head><body><div id="__next" data-reactroot=""><div class="container mx-auto px-[5vw] max-w-screen-xl"><div class="mb-32"><header class="flex justify-between items-center my-10 h-52 bg-no-repeat bg-center"><div class="logo ml-8 flex justify-start items-center cursor-pointer scale-110 transition-transform hover:scale-105"><span style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%"><span style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%"><img style="display:block;max-width:100%;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0" alt="" aria-hidden="true" src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2772%27%20height=%2772%27/%3e"/></span><img alt="Jun" href="/" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"/><noscript><img alt="Jun" href="/" srcSet="https://pzij.github.io/qun.png 1x, https://pzij.github.io/qun.png 2x" src="https://pzij.github.io/qun.png" decoding="async" data-nimg="intrinsic" style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%" loading="lazy"/></noscript></span></div><ul class="list-none float-right mr-8"><span class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light" href="/">Home</span><span class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light" href="/about">About</span><span class="navbar-item mx-8 cursor-pointer text-gray-400 hover:text-black uppercase font-light" href="/contact">Contact</span></ul></header><title>手把手教学，使用 Rust + WASM 进行 Web 开发<!-- --> | J.P.</title><h1 class="text-3xl flex justify-center items-center underline" style="text-decoration-color:#13d4ad">手把手教学，使用 Rust + WASM 进行 Web 开发</h1><div class="blog-post-container"><h2>背景</h2>
+<p>WebAssembly（WASM）是一个简单的机器模型和可执行格式，具有广泛的规范。它被设计为便携、紧凑，代码执行能够达到接近本机原生指令的执行速度。</p>
+<p>作为一种编程语言，WebAssembly 由两种格式组成，它们以不同的方式表示相同的结构：</p>
+<ul>
+<li>后缀为 <code>.wat</code> 的文本格式（称为“WebAssembly Text”），可以被人类理解，使用 <a href="https://zh.wikipedia.org/wiki/S-%E8%A1%A8%E8%BE%BE%E5%BC%8F">S-表达式</a>。</li>
+<li>后缀为 <code>.wasm</code> 的二进制格式是较低级别的，人无法读懂，它旨在供 wasm 虚拟机直接使用。</li>
+</ul>
+<p>作为参考，下面是一个在 JS 中调用两数求和 WASM 函数的例子：</p>
+<pre><code>const wasmInstance = new WebAssembly.Instance(wasmModule, {});
+const { addTwo } = wasmInstance.exports;
+for (let i = 0; i &#x3C; 5; i++) {
+  console.log(addTwo(i, i));
+}
+/**
+ * output:
+ * 0
+ * 2
+ * 4
+ * 6
+ * 8
+ **/
+</code></pre>
+<p><code>addTwo</code> 函数本身是由其他语言编写而成的，并且被编译成了 <code>.wat</code> 格式。以下是这个 <code>addTwo</code> 求和函数的 <code>.wat</code> 文件：</p>
+<pre><code>(module
+  (func (export "addTwo") (param i32 i32) (result i32)
+    local.get 0
+    local.get 1
+    i32.add))
+</code></pre>
+<blockquote>
+<p>可以通过这个网站将 <code>.wat</code> 生成对应的二进制 <code>.wasm</code> 文件：<a href="https://webassembly.github.io/wabt/demo/wat2wasm/">wat2wasm demo</a></p>
+</blockquote>
+<h2>环境配置</h2>
+<ol>
+<li>安装 <a href="https://www.rust-lang.org/tools/install">rust 工具链</a>（<code>rustup</code>，<code>rustc</code>，<code>cargo</code>）</li>
+<li>安装 <a href="https://rustwasm.github.io/wasm-pack/installer/">wasm-pack</a>，一个构建、测试和发布 WASM 的 Rust CLI 工具，我们将使用 <code>wasm-pack</code> 相关的命令来构建 WASM 二进制内容。</li>
+<li>npm，JS 包管理器</li>
+</ol>
+<p>如果不安装 wasm-pack，使用打包工具 <code>webpack</code> 加上 <code>@wasm-tool/wasm-pack-plugin</code> 插件也能构建 WASM，后文会详细介绍。</p>
+<blockquote>
+<p>Tips：安装 <a href="https://github.com/cargo-generate/cargo-generate">cargo-generate</a>，能够使用现有的 git 仓库生成一个新的 Rust 项目： <code>cargo install cargo-generate</code></p>
+</blockquote>
+<h2>快速入门</h2>
+<h3>项目初始化</h3>
+<p>首先我们执行 <code>cargo new wasm-demo</code> 初始化 Rust 项目，新建一个名为 <code>wasm-demo</code> 的文件夹（也可以选一个你喜欢的文件夹名），自动生成配置文件 <code>Cargo.toml</code>，结构如下。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c6c6527aa05242f89cf3e6b63bd1f8d2~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h3>配置包文件</h3>
+<p>我们可以在 <code>Cargo.toml</code> 文件中加上下列代码并保存，保存之后 Cargo 会自动下载依赖。</p>
+<ul>
+<li><code>cdylib</code> 用来指明库的类型。</li>
+<li><code>wasm-bindgen</code> 是一个简化 Rust WASM 与 JS 之间交互的库。
+<ul>
+<li>它能够将如 DOM 操作、console.log 和 performance 等 JS 相关 API 暴露给 Rust 使用</li>
+<li>它能够将 Rust 功能导出到 JS 中，如类、函数等</li>
+</ul>
+</li>
+</ul>
+<pre><code>[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.83"
+</code></pre>
+<h3>编写代码</h3>
+<p>接着开始编写一些简单的 Rust 代码。将模板文件中的 <code>src/main.rs</code> 改成 <code>src/lib.rs</code>，里面写上一个求斐波那契数列的 Rust 函数。需要加上<code>#[wasm_bindgen]</code>标注告诉 wasm-pack 需要将这个函数编译成 wasm 可执行文件。</p>
+<pre><code>use wasm_bindgen::prelude::*; // 用于加载 Prelude（预导入）模块
+
+#[wasm_bindgen]
+pub fn fib(n: u32) -> u32 {
+    if n == 0 || n == 1 {
+        return 1;
+    }
+    fib(n - 1) + fib(n - 2)
+}
+
+</code></pre>
+<p>当前目录应该长这样：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f303627174104ca09db1fb7caa420487~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<blockquote>
+<p>Rust 中包管理系统中两个特殊文件名称，<code>main.js</code> 是二进制项目的入口，而 <code>lib.js</code> 是库项目的入口，二者不可同时存在。参考：<a href="https://stackoverflow.com/questions/57756927/rust-modules-confusion-when-there-is-main-rs-and-lib-rs">Rust modules confusion when there is main.rs and lib.rs - Stack Overflow</a></p>
+</blockquote>
+<h3>执行编译</h3>
+<p>只需要执行我们之前安装的 wasm-pack 即可将刚刚的 Rust 代码转换成能够被 JS 导入的模块。</p>
+<pre><code>wasm-pack build
+</code></pre>
+<p>编译完成后，我们会发现根目录下多了一个 <code>pkg/</code> 文件夹，里面就是我们的 WASM 产物所在的 npm 包了。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3269892162f3491b94d0e2715f491875~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>包的入口文件是不带 <code>_bg</code> 的 <code>.js</code> 文件，即 <code>wasm_demo2.js</code>。</p>
+<p><code>wasm_demo2.js</code> 的内容如下：</p>
+<pre><code>import * as wasm from "./wasm_demo2_bg.wasm";
+export * from "./wasm_demo2_bg.js";
+</code></pre>
+<p><code>wasm_demo2_bg.js</code> 的内容如下：</p>
+<pre><code>import * as wasm from './wasm_demo2_bg.wasm';
+
+/**
+* @param {number} n
+* @returns {number}
+*/
+export function fib(n) {
+    const ret = wasm.fib(n);
+    return ret >>> 0;
+}
+</code></pre>
+<p><code>wasm_demo2.d.ts</code> 的内容如下：</p>
+<pre><code>/* tslint:disable */
+/* eslint-disable */
+/**
+* @param {number} n
+* @returns {number}
+*/
+export function fib(n: number): number;
+
+</code></pre>
+<blockquote>
+<p>可以看到，wasm-pack 打包不仅输出一个 ESM 规范的模块，而且还支持自动生成 d.ts 文件，对模块的使用者非常友好。</p>
+</blockquote>
+<h3>使用 WASM 包</h3>
+<p>下面我们就新建一个 html 页面去调用刚刚生成的模块。在根目录下生成 <code>index.html</code>，并输入以下内容。</p>
+<pre><code>&#x3C;!DOCTYPE html>
+&#x3C;html lang="en">
+&#x3C;head>
+    &#x3C;meta charset="UTF-8">
+    &#x3C;meta http-equiv="X-UA-Compatible" content="IE=edge">
+    &#x3C;meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &#x3C;title>Rust WASM demo&#x3C;/title>
+    &#x3C;script>
+        /**
+         * 1. 通过使用 instantiateStreaming 调用流式实例化
+         **/
+        WebAssembly.instantiateStreaming(fetch("./pkg/wasm_demo2.wasm")).then((obj) => {
+            const fib = obj.instance.exports.fib;
+            const out = fib(20);
+            console.log("rust output: ", out);
+        })
+        
+        /**
+         * 2. 不通过流式调用，直接读取二进制文件并对字节进行实例化
+         **/
+        fetch("./pkg/wasm_demo2.wasm")
+        .then(res => res.arrayBuffer())
+        .then(bytes => WebAssembly.instantiate(bytes))
+        .then(results => {
+            const fib = results.instance.exports.fib;
+            const out = fib(20);
+            console.log("rust output: ", out);
+        })
+
+    &#x3C;/script>
+&#x3C;/head>
+&#x3C;body>
+    
+&#x3C;/body>
+&#x3C;/html>
+</code></pre>
+<p>如上所示，可以通过流式与非流式两种原生 JS API 方式进行 <code>.wasm</code> 二进制文件的模块实例化。</p>
+<p>接下来编写一个简单的服务 <code>server.js</code>：</p>
+<pre><code>const http = require('http');
+const fs = require('fs');
+
+const reqListener = function(req, res) {
+    f = req.url === '/' ? 'index.html' : './pkg/wasm_demo2_bg.wasm';
+    if (f === './pkg/wasm_demo2_bg.wasm') {
+        res.setHeader('Content-type', 'application/wasm')
+      }
+      res.writeHead(200)
+      return fs.createReadStream(f).pipe(res)
+}
+
+const server = http.createServer(reqListener);
+server.listen(8081);
+console.log('listening: http://localhost:8081')
+</code></pre>
+<p>开启服务：</p>
+<pre><code>node server.js
+</code></pre>
+<p>打开 html 页面 <a href="http://localhost:8081/">http://localhost:8081/</a> ，在控制台可看到两份 <code>fib(20)</code> 的结果被打印出来了。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/91d2f43d4d034ba7b0cd60e2307463ed~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h2>进阶用法</h2>
+<h3>配合 Webpack 使用</h3>
+<p>使用 Webpack + wasm-pack 插件的方式构建和测试，可以直接通过 npm scripts 运行代码，像前端开发一样调试。</p>
+<p>用 <code>npm init -y</code> 新建一个项目，在 <code>package.json</code> 中新增如下代码：</p>
+<pre><code>...
+  "scripts": {
+    "build": "webpack",
+    "serve": "webpack serve"
+  },
+  "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "1.5.0",
+    "html-webpack-plugin": "^5.3.2",
+    "text-encoding": "^0.7.0",
+    "webpack": "^5.49.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  ...
+</code></pre>
+<p>执行 <code>npm i</code> 安装依赖。</p>
+<p>新建 <code>index.js</code> 文件，作为 WASM 模块的执行文件。在里面写入如下内容：</p>
+<pre><code>// 因为 webpack 的 bug（webpack/webpack#6615），这里暂时只能使用动态导入 import
+const rust = import('./pkg');
+
+rust.then(m => {
+    const out = m.fib(20);
+    console.log("rust output: ", out);
+}).catch(console.error)
+</code></pre>
+<p>新建 <code>webpack.config.js</code> 文件，并进行如下配置：</p>
+<pre><code>const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin"); // 赋予 webpack 处理 wasm 能力的插件
+
+/**
+ * @type import('webpack').Configuration
+ */
+module.exports = {
+    entry: './index.js',
+    devServer: {
+        port: '8082'
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'index.js',
+    },
+    plugins: [
+        new HtmlWebpackPlugin(),
+        new WasmPackPlugin({
+            crateDirectory: path.resolve(__dirname, ".")
+        }),
+        // Have this example work in Edge which doesn't ship `TextEncoder` or
+        // `TextDecoder` at this time. 处理浏览器兼容问题
+        new webpack.ProvidePlugin({
+          TextDecoder: ['text-encoding', 'TextDecoder'],
+          TextEncoder: ['text-encoding', 'TextEncoder']
+        })
+    ],
+    mode: 'development',
+    experiments: {
+        asyncWebAssembly: true // 打开异步 WASM 功能
+   }
+};
+</code></pre>
+<p>执行 <code>npm run build</code> 构建出 WASM 二进制产物。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eac188d2836145829682f962c84429c4~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>执行 <code>npm run serve</code> 即可进行开发，在浏览器的控制台中实时看到对应 <code>fib(20)</code> 的结果。我们可以在 <code>index.js</code> 中更改传入的参数，并查看控制台的新输出结果。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99c74f7c5cff4661b55104ba0982fc5a~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>总结就是，使用 webpack 能够帮助能够更加高效地进行 Rust WASM 应用的开发和调试。</p>
+<p>这一块借助了 webpack-dev-server 的 HMR 模块实现热更新：</p>
+<ol>
+<li>打包时将一块 webpack 脚本代码（JSONP 脚本）打包到客户端应用中。</li>
+<li>当本地 <code>lib.rs</code> 文件发生变化时，服务端 webpack-dev-server 通过 websocket 通知客户端应用代码中的 webpack 脚本代码，客户端向服务端请求最新编译好的 wasm 模块</li>
+<li>新的 WASM 模块以 JSONP 的方式从服务端传输到客户端</li>
+<li>通过 webpack 重写的 <code>__webpack_require__</code> 方法获取到新模块并加载、包裹、运行和缓存，实现模块的热替换。</li>
+</ol>
+<h3>Rust 操纵 DOM</h3>
+<p>实现一个求斐波那契数的应用，如下所示：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8401845ba8424b8d806a3cf34e0923a3~tplv-k3u1fbpfcp-zoom-1.image" alt="image.png"></p>
+<p>需要先安装一个叫 <code>web-sys</code> 的 Crate，它为 Rust 提供了控制 DOM 的能力，在 <code>Cargo.toml</code> 中新增依赖：</p>
+<pre><code>[dependencies.web-sys]
+version = "0.3.4"
+features = [ 'Document', 'Element', 'HtmlElement', 'Node', 'Window', 'HtmlInputElement']
+</code></pre>
+<blockquote>
+<p><code>features</code> 需要开发者手动地声明需要使用到的模块，这样做的好处有二：一是避免不同模块下的 <code>features</code> 名字发生冲突；二是条件编译各个依赖中的特性，对不使用的 <code>features</code> 不编译。</p>
+</blockquote>
+<p>在 <code>lib.rs</code> 函数中新增 <code>init()</code> 函数，用于生成 DOM 节点、挂载监听器并挂载 DOM 节点。</p>
+<pre><code>
+// start 标识 init() 在 WASM 加载时自动执行
+#[wasm_bindgen(start)]
+pub fn init() -> Result&#x3C;(), JsValue> {
+    // 使用 web_sys 的 window 全局对象
+    let window = web_sys::window().expect("不存在全局 window 对象");
+    let document = window.document().expect("需要在 window 上存在 document");
+    let body = document.body().expect("document 中需要存在一个 body");
+
+    // 生成 dom 元素
+    let input = document
+        .create_element("input")?
+        .dyn_into::&#x3C;web_sys::HtmlInputElement>()?;
+    let btn = document.create_element("button")?;
+    btn.set_text_content(Some(&#x26;"点击计算斐波那契数"));
+    let out = document.create_element("h3")?;
+    let input = Rc::new(input); // 为了不违背“一个变量只能有一个所有者”的规则，需要使用 Rc 包裹 input 元素，方便在闭包中拿到并使用它的值
+    let out = Rc::new(RefCell::new(out)); // 因为需要改变 out 元素的 textContent，需要使用 RefCell 包裹方便去在闭包中把它当做可变变量来改变它
+    {
+        let out = out.clone(); // 复制一份智能指针
+        let input = input.clone();
+        // 使用到 wasm_bindgen::closure::Closure，它的作用是打通 Rust 中的闭包和 JS 中的闭包
+        let closure = Closure::&#x3C;dyn Fn()>::new(move || {
+            let val = input.value();
+            let num = val.parse::&#x3C;u32>().unwrap();
+            let res = fib(num);
+            out.borrow_mut()
+                .set_text_content(Some(res.to_string().as_str())); // 在这里使用 borrow_mut 把 out 当做可变变量获取出来，并设置 textContent
+        });
+
+        btn.add_event_listener_with_callback("click", closure.as_ref().unchecked_ref())?; // 挂载事件监听器，将闭包函数先转换为 JS 值，再跳过类型判断，再作为回调函数传给 btn
+        closure.forget(); // 释放 Rust 对这片堆内存的管理，交给 JS 的 GC 去回收
+    }
+
+    body.append_child(&#x26;input)?;
+    body.append_child(&#x26;btn)?;
+    body.append_child(&#x26;out.borrow())?; // 挂载 DOM 元素节点
+    Ok(())
+}
+</code></pre>
+<p>上述 <code>init()</code> 添加了 <code>#[wasm_bindgen(start)]</code> 宏标注，<code>init()</code> 函数会在 WASM 模块初始化时自动执行。因此不再需要更改 <code>index.js</code> 文件。</p>
+<p>直接运行服务：</p>
+<pre><code>npm run serve
+</code></pre>
+<p>打开 <a href="http://localhost:8082/">http://localhost:8082/</a> ，成功！</p>
+<p>打开检查，我们可以发现 <code>body</code> 上正确地挂载了 DOM 元素。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/055d7fc6faf443c298d98c1799f6842d~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h3>性能指标</h3>
+<p>我们先在 <code>lib.rs</code> 中加上以下代码，允许 Rust 代码中调用 <code>console.log</code> 。</p>
+<pre><code>#[wasm_bindgen]
+extern "C" {
+    #[wasm_bindgen(js_namespace = console)]
+    fn log(s: &#x26;str); // 将 js 命名空间中的 console.log 方法定义在 Rust 中
+}
+
+// 定义 console.log! 宏
+macro_rules! console_log {
+    ($($t:tt)*) => (log(&#x26;format_args!($($t)*).to_string()))
+}
+</code></pre>
+<p>接着，在刚刚的求斐波那契数的应用中加上 <code>performance</code> API 相关的代码。</p>
+<p>在 <code>Cargo.toml</code> 中加上 Performance 的 features：</p>
+<pre><code>[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'Document',
+  'Element',
+  'HtmlElement',
+  'Node',
+  'Window',
+  'Performance', // 加上这一行
+  'HtmlInputElement'
+]
+</code></pre>
+<p>将求斐波那契数应用中的 <code>closure</code> 方法进行如下重写：</p>
+<pre><code>let closure = Closure::&#x3C;dyn Fn()>::new(move || {
+    let performance = window
+        .performance()
+        .expect("performance should be available"); // 获取 window.performance
+
+    let val = input.value();
+    let num = val.parse::&#x3C;u32>().unwrap();
+    let start = performance.now(); // 调用 performance.now() 获取当前时间
+    console_log!("the start time (in ms) is {}", start);
+    let res = fib(num);
+    let end = performance.now();
+    console_log!("the end time (in ms) is {}", end);
+    console_log!("delta (in ms) is {}", end-start);
+    out.borrow_mut()
+        .set_text_content(Some(res.to_string().as_str()));
+});
+</code></pre>
+<p>运行服务器：</p>
+<pre><code>npm run serve
+</code></pre>
+<p>现在在控制台就能够看到执行运算的耗时了。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c2e5a10842de41929b2d101f2313c27b~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<blockquote>
+<p>执行运算的<a href="https://recordit.co/muajFCjHAR">录屏</a></p>
+</blockquote>
+<p>性能比较：</p>
+<table>
+<thead>
+<tr>
+<th>fib(n)</th>
+<th>10</th>
+<th>20</th>
+<th>30</th>
+<th>35</th>
+<th>40</th>
+<th>45</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wasm</td>
+<td>0.30</td>
+<td>0.90</td>
+<td>69.90</td>
+<td>726.59</td>
+<td>8018</td>
+<td>90918.79</td>
+</tr>
+<tr>
+<td>js</td>
+<td>0.19</td>
+<td>0.80</td>
+<td>67.70</td>
+<td>753.20</td>
+<td>8061</td>
+<td>91794.70</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，<em>在 n 不大的场景下，WASM 的耗时比纯 JS 还要长</em>，这是因为浏览器需要在 VM 容器中对 WASM 模块进行实例化，可能这一部分会消耗相当的时间，导致性能不如纯 JS 的执行。随着运算规模变大，WASM 的优化越来越明显。</p>
+<h2>总结</h2>
+<p>WASM 从 2017 年 3 月推出以来，已然成了 Web 开发的未来发展趋势之一。</p>
+<p>本文不仅介绍了 WASM 的背景、环境配置、Rust 项目初始化、编译和使用 WASM 等基本用法，还通过一个简单的应用介绍了 WASM 与 webpack 配合开发、与 DOM 之间交互以及性能指标分析等进阶用法。</p>
+<h2>Ref</h2>
+<ul>
+<li><a href="https://rustwasm.github.io/docs/book/introduction.html">Rust and WebAssembly</a></li>
+<li><a href="https://rustwasm.github.io/wasm-bindgen/examples/hello-world.html">hello-world</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/WebAssembly/Using_the_JavaScript_API">Using the WebAssembly JavaScript API</a></li>
+<li><a href="https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen/closure/struct.Closure.html">Closure in wasm_bindgen::closure - Rust (rustwasm.github.io)</a></li>
+<li><a href="https://rustwasm.github.io/wasm-bindgen/reference/attributes/on-rust-exports/start.html">start - The <code>wasm-bindgen</code> Guide (rustwasm.github.io)</a></li>
+</ul>
+</div><hr class="hr-fade-content" data-content="&lt;/ 手把手教学，使用 Rust + WASM 进行 Web 开发 &gt;"/></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"post":{"title":"手把手教学，使用 Rust + WASM 进行 Web 开发","date":"2022-10-20","slug":"rust-wasm-for-web","content":"\u003ch2\u003e背景\u003c/h2\u003e\n\u003cp\u003eWebAssembly（WASM）是一个简单的机器模型和可执行格式，具有广泛的规范。它被设计为便携、紧凑，代码执行能够达到接近本机原生指令的执行速度。\u003c/p\u003e\n\u003cp\u003e作为一种编程语言，WebAssembly 由两种格式组成，它们以不同的方式表示相同的结构：\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e后缀为 \u003ccode\u003e.wat\u003c/code\u003e 的文本格式（称为“WebAssembly Text”），可以被人类理解，使用 \u003ca href=\"https://zh.wikipedia.org/wiki/S-%E8%A1%A8%E8%BE%BE%E5%BC%8F\"\u003eS-表达式\u003c/a\u003e。\u003c/li\u003e\n\u003cli\u003e后缀为 \u003ccode\u003e.wasm\u003c/code\u003e 的二进制格式是较低级别的，人无法读懂，它旨在供 wasm 虚拟机直接使用。\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e作为参考，下面是一个在 JS 中调用两数求和 WASM 函数的例子：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003econst wasmInstance = new WebAssembly.Instance(wasmModule, {});\r\nconst { addTwo } = wasmInstance.exports;\r\nfor (let i = 0; i \u0026#x3C; 5; i++) {\r\n  console.log(addTwo(i, i));\r\n}\r\n/**\r\n * output:\r\n * 0\r\n * 2\r\n * 4\r\n * 6\r\n * 8\r\n **/\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003ccode\u003eaddTwo\u003c/code\u003e 函数本身是由其他语言编写而成的，并且被编译成了 \u003ccode\u003e.wat\u003c/code\u003e 格式。以下是这个 \u003ccode\u003eaddTwo\u003c/code\u003e 求和函数的 \u003ccode\u003e.wat\u003c/code\u003e 文件：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e(module\r\n  (func (export \"addTwo\") (param i32 i32) (result i32)\r\n    local.get 0\r\n    local.get 1\r\n    i32.add))\n\u003c/code\u003e\u003c/pre\u003e\n\u003cblockquote\u003e\n\u003cp\u003e可以通过这个网站将 \u003ccode\u003e.wat\u003c/code\u003e 生成对应的二进制 \u003ccode\u003e.wasm\u003c/code\u003e 文件：\u003ca href=\"https://webassembly.github.io/wabt/demo/wat2wasm/\"\u003ewat2wasm demo\u003c/a\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2\u003e环境配置\u003c/h2\u003e\n\u003col\u003e\n\u003cli\u003e安装 \u003ca href=\"https://www.rust-lang.org/tools/install\"\u003erust 工具链\u003c/a\u003e（\u003ccode\u003erustup\u003c/code\u003e，\u003ccode\u003erustc\u003c/code\u003e，\u003ccode\u003ecargo\u003c/code\u003e）\u003c/li\u003e\n\u003cli\u003e安装 \u003ca href=\"https://rustwasm.github.io/wasm-pack/installer/\"\u003ewasm-pack\u003c/a\u003e，一个构建、测试和发布 WASM 的 Rust CLI 工具，我们将使用 \u003ccode\u003ewasm-pack\u003c/code\u003e 相关的命令来构建 WASM 二进制内容。\u003c/li\u003e\n\u003cli\u003enpm，JS 包管理器\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e如果不安装 wasm-pack，使用打包工具 \u003ccode\u003ewebpack\u003c/code\u003e 加上 \u003ccode\u003e@wasm-tool/wasm-pack-plugin\u003c/code\u003e 插件也能构建 WASM，后文会详细介绍。\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eTips：安装 \u003ca href=\"https://github.com/cargo-generate/cargo-generate\"\u003ecargo-generate\u003c/a\u003e，能够使用现有的 git 仓库生成一个新的 Rust 项目： \u003ccode\u003ecargo install cargo-generate\u003c/code\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2\u003e快速入门\u003c/h2\u003e\n\u003ch3\u003e项目初始化\u003c/h3\u003e\n\u003cp\u003e首先我们执行 \u003ccode\u003ecargo new wasm-demo\u003c/code\u003e 初始化 Rust 项目，新建一个名为 \u003ccode\u003ewasm-demo\u003c/code\u003e 的文件夹（也可以选一个你喜欢的文件夹名），自动生成配置文件 \u003ccode\u003eCargo.toml\u003c/code\u003e，结构如下。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c6c6527aa05242f89cf3e6b63bd1f8d2~tplv-k3u1fbpfcp-watermark.image?\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003ch3\u003e配置包文件\u003c/h3\u003e\n\u003cp\u003e我们可以在 \u003ccode\u003eCargo.toml\u003c/code\u003e 文件中加上下列代码并保存，保存之后 Cargo 会自动下载依赖。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ccode\u003ecdylib\u003c/code\u003e 用来指明库的类型。\u003c/li\u003e\n\u003cli\u003e\u003ccode\u003ewasm-bindgen\u003c/code\u003e 是一个简化 Rust WASM 与 JS 之间交互的库。\n\u003cul\u003e\n\u003cli\u003e它能够将如 DOM 操作、console.log 和 performance 等 JS 相关 API 暴露给 Rust 使用\u003c/li\u003e\n\u003cli\u003e它能够将 Rust 功能导出到 JS 中，如类、函数等\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode\u003e[lib]\r\ncrate-type = [\"cdylib\"]\r\n\r\n[dependencies]\r\nwasm-bindgen = \"0.2.83\"\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003e编写代码\u003c/h3\u003e\n\u003cp\u003e接着开始编写一些简单的 Rust 代码。将模板文件中的 \u003ccode\u003esrc/main.rs\u003c/code\u003e 改成 \u003ccode\u003esrc/lib.rs\u003c/code\u003e，里面写上一个求斐波那契数列的 Rust 函数。需要加上\u003ccode\u003e#[wasm_bindgen]\u003c/code\u003e标注告诉 wasm-pack 需要将这个函数编译成 wasm 可执行文件。\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003euse wasm_bindgen::prelude::*; // 用于加载 Prelude（预导入）模块\r\n\r\n#[wasm_bindgen]\r\npub fn fib(n: u32) -\u003e u32 {\r\n    if n == 0 || n == 1 {\r\n        return 1;\r\n    }\r\n    fib(n - 1) + fib(n - 2)\r\n}\r\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e当前目录应该长这样：\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f303627174104ca09db1fb7caa420487~tplv-k3u1fbpfcp-watermark.image?\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003eRust 中包管理系统中两个特殊文件名称，\u003ccode\u003emain.js\u003c/code\u003e 是二进制项目的入口，而 \u003ccode\u003elib.js\u003c/code\u003e 是库项目的入口，二者不可同时存在。参考：\u003ca href=\"https://stackoverflow.com/questions/57756927/rust-modules-confusion-when-there-is-main-rs-and-lib-rs\"\u003eRust modules confusion when there is main.rs and lib.rs - Stack Overflow\u003c/a\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch3\u003e执行编译\u003c/h3\u003e\n\u003cp\u003e只需要执行我们之前安装的 wasm-pack 即可将刚刚的 Rust 代码转换成能够被 JS 导入的模块。\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ewasm-pack build\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e编译完成后，我们会发现根目录下多了一个 \u003ccode\u003epkg/\u003c/code\u003e 文件夹，里面就是我们的 WASM 产物所在的 npm 包了。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3269892162f3491b94d0e2715f491875~tplv-k3u1fbpfcp-watermark.image?\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003cp\u003e包的入口文件是不带 \u003ccode\u003e_bg\u003c/code\u003e 的 \u003ccode\u003e.js\u003c/code\u003e 文件，即 \u003ccode\u003ewasm_demo2.js\u003c/code\u003e。\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003ewasm_demo2.js\u003c/code\u003e 的内容如下：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eimport * as wasm from \"./wasm_demo2_bg.wasm\";\r\nexport * from \"./wasm_demo2_bg.js\";\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003ccode\u003ewasm_demo2_bg.js\u003c/code\u003e 的内容如下：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eimport * as wasm from './wasm_demo2_bg.wasm';\r\n\r\n/**\r\n* @param {number} n\r\n* @returns {number}\r\n*/\r\nexport function fib(n) {\r\n    const ret = wasm.fib(n);\r\n    return ret \u003e\u003e\u003e 0;\r\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003ccode\u003ewasm_demo2.d.ts\u003c/code\u003e 的内容如下：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e/* tslint:disable */\r\n/* eslint-disable */\r\n/**\r\n* @param {number} n\r\n* @returns {number}\r\n*/\r\nexport function fib(n: number): number;\r\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003cblockquote\u003e\n\u003cp\u003e可以看到，wasm-pack 打包不仅输出一个 ESM 规范的模块，而且还支持自动生成 d.ts 文件，对模块的使用者非常友好。\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch3\u003e使用 WASM 包\u003c/h3\u003e\n\u003cp\u003e下面我们就新建一个 html 页面去调用刚刚生成的模块。在根目录下生成 \u003ccode\u003eindex.html\u003c/code\u003e，并输入以下内容。\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e\u0026#x3C;!DOCTYPE html\u003e\r\n\u0026#x3C;html lang=\"en\"\u003e\r\n\u0026#x3C;head\u003e\r\n    \u0026#x3C;meta charset=\"UTF-8\"\u003e\r\n    \u0026#x3C;meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"\u003e\r\n    \u0026#x3C;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"\u003e\r\n    \u0026#x3C;title\u003eRust WASM demo\u0026#x3C;/title\u003e\r\n    \u0026#x3C;script\u003e\r\n        /**\r\n         * 1. 通过使用 instantiateStreaming 调用流式实例化\r\n         **/\r\n        WebAssembly.instantiateStreaming(fetch(\"./pkg/wasm_demo2.wasm\")).then((obj) =\u003e {\r\n            const fib = obj.instance.exports.fib;\r\n            const out = fib(20);\r\n            console.log(\"rust output: \", out);\r\n        })\r\n        \r\n        /**\r\n         * 2. 不通过流式调用，直接读取二进制文件并对字节进行实例化\r\n         **/\r\n        fetch(\"./pkg/wasm_demo2.wasm\")\r\n        .then(res =\u003e res.arrayBuffer())\r\n        .then(bytes =\u003e WebAssembly.instantiate(bytes))\r\n        .then(results =\u003e {\r\n            const fib = results.instance.exports.fib;\r\n            const out = fib(20);\r\n            console.log(\"rust output: \", out);\r\n        })\r\n\r\n    \u0026#x3C;/script\u003e\r\n\u0026#x3C;/head\u003e\r\n\u0026#x3C;body\u003e\r\n    \r\n\u0026#x3C;/body\u003e\r\n\u0026#x3C;/html\u003e\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e如上所示，可以通过流式与非流式两种原生 JS API 方式进行 \u003ccode\u003e.wasm\u003c/code\u003e 二进制文件的模块实例化。\u003c/p\u003e\n\u003cp\u003e接下来编写一个简单的服务 \u003ccode\u003eserver.js\u003c/code\u003e：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003econst http = require('http');\r\nconst fs = require('fs');\r\n\r\nconst reqListener = function(req, res) {\r\n    f = req.url === '/' ? 'index.html' : './pkg/wasm_demo2_bg.wasm';\r\n    if (f === './pkg/wasm_demo2_bg.wasm') {\r\n        res.setHeader('Content-type', 'application/wasm')\r\n      }\r\n      res.writeHead(200)\r\n      return fs.createReadStream(f).pipe(res)\r\n}\r\n\r\nconst server = http.createServer(reqListener);\r\nserver.listen(8081);\r\nconsole.log('listening: http://localhost:8081')\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e开启服务：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003enode server.js\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e打开 html 页面 \u003ca href=\"http://localhost:8081/\"\u003ehttp://localhost:8081/\u003c/a\u003e ，在控制台可看到两份 \u003ccode\u003efib(20)\u003c/code\u003e 的结果被打印出来了。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/91d2f43d4d034ba7b0cd60e2307463ed~tplv-k3u1fbpfcp-watermark.image?\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003ch2\u003e进阶用法\u003c/h2\u003e\n\u003ch3\u003e配合 Webpack 使用\u003c/h3\u003e\n\u003cp\u003e使用 Webpack + wasm-pack 插件的方式构建和测试，可以直接通过 npm scripts 运行代码，像前端开发一样调试。\u003c/p\u003e\n\u003cp\u003e用 \u003ccode\u003enpm init -y\u003c/code\u003e 新建一个项目，在 \u003ccode\u003epackage.json\u003c/code\u003e 中新增如下代码：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e...\r\n  \"scripts\": {\r\n    \"build\": \"webpack\",\r\n    \"serve\": \"webpack serve\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@wasm-tool/wasm-pack-plugin\": \"1.5.0\",\r\n    \"html-webpack-plugin\": \"^5.3.2\",\r\n    \"text-encoding\": \"^0.7.0\",\r\n    \"webpack\": \"^5.49.0\",\r\n    \"webpack-cli\": \"^4.7.2\",\r\n    \"webpack-dev-server\": \"^3.11.2\"\r\n  },\r\n  ...\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e执行 \u003ccode\u003enpm i\u003c/code\u003e 安装依赖。\u003c/p\u003e\n\u003cp\u003e新建 \u003ccode\u003eindex.js\u003c/code\u003e 文件，作为 WASM 模块的执行文件。在里面写入如下内容：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// 因为 webpack 的 bug（webpack/webpack#6615），这里暂时只能使用动态导入 import\r\nconst rust = import('./pkg');\r\n\r\nrust.then(m =\u003e {\r\n    const out = m.fib(20);\r\n    console.log(\"rust output: \", out);\r\n}).catch(console.error)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e新建 \u003ccode\u003ewebpack.config.js\u003c/code\u003e 文件，并进行如下配置：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003econst path = require('path');\r\nconst HtmlWebpackPlugin = require('html-webpack-plugin');\r\nconst webpack = require('webpack');\r\nconst WasmPackPlugin = require(\"@wasm-tool/wasm-pack-plugin\"); // 赋予 webpack 处理 wasm 能力的插件\r\n\r\n/**\r\n * @type import('webpack').Configuration\r\n */\r\nmodule.exports = {\r\n    entry: './index.js',\r\n    devServer: {\r\n        port: '8082'\r\n    },\r\n    output: {\r\n        path: path.resolve(__dirname, 'dist'),\r\n        filename: 'index.js',\r\n    },\r\n    plugins: [\r\n        new HtmlWebpackPlugin(),\r\n        new WasmPackPlugin({\r\n            crateDirectory: path.resolve(__dirname, \".\")\r\n        }),\r\n        // Have this example work in Edge which doesn't ship `TextEncoder` or\r\n        // `TextDecoder` at this time. 处理浏览器兼容问题\r\n        new webpack.ProvidePlugin({\r\n          TextDecoder: ['text-encoding', 'TextDecoder'],\r\n          TextEncoder: ['text-encoding', 'TextEncoder']\r\n        })\r\n    ],\r\n    mode: 'development',\r\n    experiments: {\r\n        asyncWebAssembly: true // 打开异步 WASM 功能\r\n   }\r\n};\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e执行 \u003ccode\u003enpm run build\u003c/code\u003e 构建出 WASM 二进制产物。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eac188d2836145829682f962c84429c4~tplv-k3u1fbpfcp-watermark.image?\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003cp\u003e执行 \u003ccode\u003enpm run serve\u003c/code\u003e 即可进行开发，在浏览器的控制台中实时看到对应 \u003ccode\u003efib(20)\u003c/code\u003e 的结果。我们可以在 \u003ccode\u003eindex.js\u003c/code\u003e 中更改传入的参数，并查看控制台的新输出结果。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99c74f7c5cff4661b55104ba0982fc5a~tplv-k3u1fbpfcp-watermark.image?\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003cp\u003e总结就是，使用 webpack 能够帮助能够更加高效地进行 Rust WASM 应用的开发和调试。\u003c/p\u003e\n\u003cp\u003e这一块借助了 webpack-dev-server 的 HMR 模块实现热更新：\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e打包时将一块 webpack 脚本代码（JSONP 脚本）打包到客户端应用中。\u003c/li\u003e\n\u003cli\u003e当本地 \u003ccode\u003elib.rs\u003c/code\u003e 文件发生变化时，服务端 webpack-dev-server 通过 websocket 通知客户端应用代码中的 webpack 脚本代码，客户端向服务端请求最新编译好的 wasm 模块\u003c/li\u003e\n\u003cli\u003e新的 WASM 模块以 JSONP 的方式从服务端传输到客户端\u003c/li\u003e\n\u003cli\u003e通过 webpack 重写的 \u003ccode\u003e__webpack_require__\u003c/code\u003e 方法获取到新模块并加载、包裹、运行和缓存，实现模块的热替换。\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch3\u003eRust 操纵 DOM\u003c/h3\u003e\n\u003cp\u003e实现一个求斐波那契数的应用，如下所示：\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8401845ba8424b8d806a3cf34e0923a3~tplv-k3u1fbpfcp-zoom-1.image\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003cp\u003e需要先安装一个叫 \u003ccode\u003eweb-sys\u003c/code\u003e 的 Crate，它为 Rust 提供了控制 DOM 的能力，在 \u003ccode\u003eCargo.toml\u003c/code\u003e 中新增依赖：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e[dependencies.web-sys]\r\nversion = \"0.3.4\"\r\nfeatures = [ 'Document', 'Element', 'HtmlElement', 'Node', 'Window', 'HtmlInputElement']\n\u003c/code\u003e\u003c/pre\u003e\n\u003cblockquote\u003e\n\u003cp\u003e\u003ccode\u003efeatures\u003c/code\u003e 需要开发者手动地声明需要使用到的模块，这样做的好处有二：一是避免不同模块下的 \u003ccode\u003efeatures\u003c/code\u003e 名字发生冲突；二是条件编译各个依赖中的特性，对不使用的 \u003ccode\u003efeatures\u003c/code\u003e 不编译。\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e在 \u003ccode\u003elib.rs\u003c/code\u003e 函数中新增 \u003ccode\u003einit()\u003c/code\u003e 函数，用于生成 DOM 节点、挂载监听器并挂载 DOM 节点。\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e\r\n// start 标识 init() 在 WASM 加载时自动执行\r\n#[wasm_bindgen(start)]\r\npub fn init() -\u003e Result\u0026#x3C;(), JsValue\u003e {\r\n    // 使用 web_sys 的 window 全局对象\r\n    let window = web_sys::window().expect(\"不存在全局 window 对象\");\r\n    let document = window.document().expect(\"需要在 window 上存在 document\");\r\n    let body = document.body().expect(\"document 中需要存在一个 body\");\r\n\r\n    // 生成 dom 元素\r\n    let input = document\r\n        .create_element(\"input\")?\r\n        .dyn_into::\u0026#x3C;web_sys::HtmlInputElement\u003e()?;\r\n    let btn = document.create_element(\"button\")?;\r\n    btn.set_text_content(Some(\u0026#x26;\"点击计算斐波那契数\"));\r\n    let out = document.create_element(\"h3\")?;\r\n    let input = Rc::new(input); // 为了不违背“一个变量只能有一个所有者”的规则，需要使用 Rc 包裹 input 元素，方便在闭包中拿到并使用它的值\r\n    let out = Rc::new(RefCell::new(out)); // 因为需要改变 out 元素的 textContent，需要使用 RefCell 包裹方便去在闭包中把它当做可变变量来改变它\r\n    {\r\n        let out = out.clone(); // 复制一份智能指针\r\n        let input = input.clone();\r\n        // 使用到 wasm_bindgen::closure::Closure，它的作用是打通 Rust 中的闭包和 JS 中的闭包\r\n        let closure = Closure::\u0026#x3C;dyn Fn()\u003e::new(move || {\r\n            let val = input.value();\r\n            let num = val.parse::\u0026#x3C;u32\u003e().unwrap();\r\n            let res = fib(num);\r\n            out.borrow_mut()\r\n                .set_text_content(Some(res.to_string().as_str())); // 在这里使用 borrow_mut 把 out 当做可变变量获取出来，并设置 textContent\r\n        });\r\n\r\n        btn.add_event_listener_with_callback(\"click\", closure.as_ref().unchecked_ref())?; // 挂载事件监听器，将闭包函数先转换为 JS 值，再跳过类型判断，再作为回调函数传给 btn\r\n        closure.forget(); // 释放 Rust 对这片堆内存的管理，交给 JS 的 GC 去回收\r\n    }\r\n\r\n    body.append_child(\u0026#x26;input)?;\r\n    body.append_child(\u0026#x26;btn)?;\r\n    body.append_child(\u0026#x26;out.borrow())?; // 挂载 DOM 元素节点\r\n    Ok(())\r\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e上述 \u003ccode\u003einit()\u003c/code\u003e 添加了 \u003ccode\u003e#[wasm_bindgen(start)]\u003c/code\u003e 宏标注，\u003ccode\u003einit()\u003c/code\u003e 函数会在 WASM 模块初始化时自动执行。因此不再需要更改 \u003ccode\u003eindex.js\u003c/code\u003e 文件。\u003c/p\u003e\n\u003cp\u003e直接运行服务：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003enpm run serve\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e打开 \u003ca href=\"http://localhost:8082/\"\u003ehttp://localhost:8082/\u003c/a\u003e ，成功！\u003c/p\u003e\n\u003cp\u003e打开检查，我们可以发现 \u003ccode\u003ebody\u003c/code\u003e 上正确地挂载了 DOM 元素。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/055d7fc6faf443c298d98c1799f6842d~tplv-k3u1fbpfcp-watermark.image?\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003ch3\u003e性能指标\u003c/h3\u003e\n\u003cp\u003e我们先在 \u003ccode\u003elib.rs\u003c/code\u003e 中加上以下代码，允许 Rust 代码中调用 \u003ccode\u003econsole.log\u003c/code\u003e 。\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e#[wasm_bindgen]\r\nextern \"C\" {\r\n    #[wasm_bindgen(js_namespace = console)]\r\n    fn log(s: \u0026#x26;str); // 将 js 命名空间中的 console.log 方法定义在 Rust 中\r\n}\r\n\r\n// 定义 console.log! 宏\r\nmacro_rules! console_log {\r\n    ($($t:tt)*) =\u003e (log(\u0026#x26;format_args!($($t)*).to_string()))\r\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e接着，在刚刚的求斐波那契数的应用中加上 \u003ccode\u003eperformance\u003c/code\u003e API 相关的代码。\u003c/p\u003e\n\u003cp\u003e在 \u003ccode\u003eCargo.toml\u003c/code\u003e 中加上 Performance 的 features：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e[dependencies.web-sys]\r\nversion = \"0.3.4\"\r\nfeatures = [\r\n  'Document',\r\n  'Element',\r\n  'HtmlElement',\r\n  'Node',\r\n  'Window',\r\n  'Performance', // 加上这一行\r\n  'HtmlInputElement'\r\n]\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e将求斐波那契数应用中的 \u003ccode\u003eclosure\u003c/code\u003e 方法进行如下重写：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003elet closure = Closure::\u0026#x3C;dyn Fn()\u003e::new(move || {\r\n    let performance = window\r\n        .performance()\r\n        .expect(\"performance should be available\"); // 获取 window.performance\r\n\r\n    let val = input.value();\r\n    let num = val.parse::\u0026#x3C;u32\u003e().unwrap();\r\n    let start = performance.now(); // 调用 performance.now() 获取当前时间\r\n    console_log!(\"the start time (in ms) is {}\", start);\r\n    let res = fib(num);\r\n    let end = performance.now();\r\n    console_log!(\"the end time (in ms) is {}\", end);\r\n    console_log!(\"delta (in ms) is {}\", end-start);\r\n    out.borrow_mut()\r\n        .set_text_content(Some(res.to_string().as_str()));\r\n});\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e运行服务器：\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003enpm run serve\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e现在在控制台就能够看到执行运算的耗时了。\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c2e5a10842de41929b2d101f2313c27b~tplv-k3u1fbpfcp-watermark.image?\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e执行运算的\u003ca href=\"https://recordit.co/muajFCjHAR\"\u003e录屏\u003c/a\u003e\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e性能比较：\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003efib(n)\u003c/th\u003e\n\u003cth\u003e10\u003c/th\u003e\n\u003cth\u003e20\u003c/th\u003e\n\u003cth\u003e30\u003c/th\u003e\n\u003cth\u003e35\u003c/th\u003e\n\u003cth\u003e40\u003c/th\u003e\n\u003cth\u003e45\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003ewasm\u003c/td\u003e\n\u003ctd\u003e0.30\u003c/td\u003e\n\u003ctd\u003e0.90\u003c/td\u003e\n\u003ctd\u003e69.90\u003c/td\u003e\n\u003ctd\u003e726.59\u003c/td\u003e\n\u003ctd\u003e8018\u003c/td\u003e\n\u003ctd\u003e90918.79\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003ejs\u003c/td\u003e\n\u003ctd\u003e0.19\u003c/td\u003e\n\u003ctd\u003e0.80\u003c/td\u003e\n\u003ctd\u003e67.70\u003c/td\u003e\n\u003ctd\u003e753.20\u003c/td\u003e\n\u003ctd\u003e8061\u003c/td\u003e\n\u003ctd\u003e91794.70\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003e可以看到，\u003cem\u003e在 n 不大的场景下，WASM 的耗时比纯 JS 还要长\u003c/em\u003e，这是因为浏览器需要在 VM 容器中对 WASM 模块进行实例化，可能这一部分会消耗相当的时间，导致性能不如纯 JS 的执行。随着运算规模变大，WASM 的优化越来越明显。\u003c/p\u003e\n\u003ch2\u003e总结\u003c/h2\u003e\n\u003cp\u003eWASM 从 2017 年 3 月推出以来，已然成了 Web 开发的未来发展趋势之一。\u003c/p\u003e\n\u003cp\u003e本文不仅介绍了 WASM 的背景、环境配置、Rust 项目初始化、编译和使用 WASM 等基本用法，还通过一个简单的应用介绍了 WASM 与 webpack 配合开发、与 DOM 之间交互以及性能指标分析等进阶用法。\u003c/p\u003e\n\u003ch2\u003eRef\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e\u003ca href=\"https://rustwasm.github.io/docs/book/introduction.html\"\u003eRust and WebAssembly\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://rustwasm.github.io/wasm-bindgen/examples/hello-world.html\"\u003ehello-world\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://developer.mozilla.org/en-US/docs/WebAssembly/Using_the_JavaScript_API\"\u003eUsing the WebAssembly JavaScript API\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen/closure/struct.Closure.html\"\u003eClosure in wasm_bindgen::closure - Rust (rustwasm.github.io)\u003c/a\u003e\u003c/li\u003e\n\u003cli\u003e\u003ca href=\"https://rustwasm.github.io/wasm-bindgen/reference/attributes/on-rust-exports/start.html\"\u003estart - The \u003ccode\u003ewasm-bindgen\u003c/code\u003e Guide (rustwasm.github.io)\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n"}},"__N_SSG":true},"page":"/blog/[slug]","query":{"slug":"rust-wasm-for-web"},"buildId":"-AtGbS5MCSPpwy06olOgR","assetPrefix":"https://pzij.github.io","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
