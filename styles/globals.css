@@ -115,8 +115,18 @@ hr.hr-fade-content::before {
   border: solid #d0d0d5;
   border-width: 0 99vw;
   width: fit-content;
-  /* for 不支持fit-content浏览器 */
+  /* for 不支持 fit-content 浏览器 */
   white-space: nowrap;
   left: 50%;
   transform: translateX(-50%);
+}
+
+table {
+  width: 100%;
+  margin: 1.2em 0 2em;
+}
+
+table thead {
+  background-color: #f6f6f6;
+  text-align: left;
 }
