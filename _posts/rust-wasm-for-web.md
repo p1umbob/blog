@@ -97,7 +97,19 @@ pub fn fib(n: u32) -> u32 {
 
 ![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f303627174104ca09db1fb7caa420487~tplv-k3u1fbpfcp-watermark.image?)
 
-> Rust 中包管理系统中两个特殊文件名称，`main.js` 是二进制项目的入口，而 `lib.js` 是库项目的入口，二者不可同时存在。参考：[Rust modules confusion when there is main.rs and lib.rs - Stack Overflow](https://stackoverflow.com/questions/57756927/rust-modules-confusion-when-there-is-main-rs-and-lib-rs)
+Rust 中包管理系统将 crate 包分为二进制包（Binary）和库包（Library）两种，二者可以在同一个项目中[同时存在](https://dev.to/yjdoc2/make-a-combined-library-and-binary-project-in-rust-d4f)。
+ 
+二进制包：
+- `main.rs` 是二进制项目的入口
+-  二进制项目可直接执行
+-  一个项目中二进制包可以有多个，所以在 Cargo.toml 中通过双方括号标识 `[[bin]]`
+ 
+库包：
+- `lib.rs` 是库包的入口。
+- 库项目不可直接执行，通常用来作为一个模块被其他项目引用。
+- 一个项目中库包仅有 1 个，在 Cargo.toml 中通过单方括号标识 `[lib]`
+
+因为我们这里希望将 WASM 转为一个可以在 JS 项目中使用的模块，所以需要使用库包 `lib.rs` 的命名。
 
 ### 执行编译
 
@@ -478,9 +490,11 @@ WASM 从 2017 年 3 月推出以来，已然成了 Web 开发的未来发展趋�
 
 本文不仅介绍了 WASM 的背景、环境配置、Rust 项目初始化、编译和使用 WASM 等基本用法，还通过一个简单的应用介绍了 WASM 与 webpack 配合开发、与 DOM 之间交互以及性能指标分析等进阶用法。
 
-## Ref
+
+## 参考资料
 - [Rust and WebAssembly](https://rustwasm.github.io/docs/book/introduction.html)
 - [hello-world](https://rustwasm.github.io/wasm-bindgen/examples/hello-world.html)
 - [Using the WebAssembly JavaScript API](https://developer.mozilla.org/en-US/docs/WebAssembly/Using_the_JavaScript_API)
 - [Closure in wasm_bindgen::closure - Rust (rustwasm.github.io)](https://rustwasm.github.io/wasm-bindgen/api/wasm_bindgen/closure/struct.Closure.html)
 - [start - The `wasm-bindgen` Guide (rustwasm.github.io)](https://rustwasm.github.io/wasm-bindgen/reference/attributes/on-rust-exports/start.html)
+- [Make a Combined Library and Binary Project in Rust - DEV Community 👩‍💻👨‍💻](https://dev.to/yjdoc2/make-a-combined-library-and-binary-project-in-rust-d4f)
