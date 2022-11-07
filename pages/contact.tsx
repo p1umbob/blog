@@ -13,6 +13,9 @@ const Contact: any = ({ allPosts }: any) => {
         <p>
           Github: <a href={"https://github.com/pzij"}>Johnny Pan</a>
         </p>
+        <p>
+          Juejin: <a href={"https://juejin.cn/user/1345457963935086"}>JohnnyPan</a>
+        </p>
       </section>
     </Layout>
   );
