@@ -3,12 +3,9 @@ title: "Yjs 基本原理"
 date: "2022-11-07"
 ---
 
-> Yjs 的工作原理可以参考[这篇文章](https://github.com/yjs/yjs/blob/main/INTERNALS.md)
-
-#背景
-Yjs 的实现是基于 YATA 的[这篇论文](https://www.researchgate.net/publication/310212186_Near_Real-Time_Peer-to-Peer_Shared_Editing_on_Extensible_Data_Types)。
-
-#原理
+> 参考：Yjs 的工作原理可以参考[这篇文章](https://github.com/yjs/yjs/blob/main/INTERNALS.md)
+>
+> 背景：Yjs 的实现是基于 YATA 的[这篇论文](https://www.researchgate.net/publication/310212186_Near_Real-Time_Peer-to-Peer_Shared_Editing_on_Extensible_Data_Types)。
 
 # Yjs 基础
 
