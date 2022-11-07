@@ -25,6 +25,7 @@ const Blogpost: any = ({ post, morePosts, preview }: any) => {
         className="text-3xl flex justify-center items-center underline"
         style={{
           textDecorationColor: "#" + random,
+          marginBottom: "2em"
         }}
       >
         {post.title}
