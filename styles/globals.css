@@ -126,6 +126,11 @@ table {
   margin: 1.2em 0 2em;
 }
 
+em {
+  background: #eeceff96;
+  font-weight: 300;
+}
+
 table thead {
   background-color: #f6f6f6;
   text-align: left;
