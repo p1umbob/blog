@@ -5,13 +5,14 @@ import { getAllPosts, getPostBySlug } from "../../lib/api";
 import markdownToHtml from "../../lib/markdownToHtml";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
+import { logger } from "utils/logger";
 
 const Blogpost: any = ({ post, morePosts, preview }: any) => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     // return <ErrorPage statusCode={404} />;
   }
-  console.log(post);
+  logger(post);
   useEffect(() => {
     hljs.initHighlighting();
   }, []);

@@ -5,9 +5,10 @@ import Link from "next/link";
 import { Layout } from "../layout/layout";
 import styles from "../styles/Home.module.css";
 import { getAllPosts } from "../lib/api";
+import { logger } from "utils/logger";
 
 const Home: any = ({ allPosts }: any) => {
-  console.log(allPosts);
+  logger(allPosts);
 
   return (
     <Layout>
