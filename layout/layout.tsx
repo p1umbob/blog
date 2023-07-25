@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -5,24 +6,27 @@ import img from "../public/qun.png";
 
 export const Layout = ({ children }: any) => (
   <div className="container mx-auto px-[5vw] max-w-screen-xl">
+    <Head>
+      <meta name="referrer" content="no-referrer" />
+    </Head>
     <div
       className="mb-32"
-      // style={{
-      //   margin: "3rem auto",
-      //   maxWidth: 650,
-      //   padding: "0 1rem",
-      // }}
+    // style={{
+    //   margin: "3rem auto",
+    //   maxWidth: 650,
+    //   padding: "0 1rem",
+    // }}
     >
       <header
         className="flex justify-between items-center my-10 h-52 bg-no-repeat bg-center"
-        // style={{
-        //   display: "flex",
-        //   flexDirection: "row",
-        //   justifyContent: "space-between",
-        //   alignItems: "center",
-        //   minWidth: "800px",
-        //   paddingBottom: "2rem",
-        // }}
+      // style={{
+      //   display: "flex",
+      //   flexDirection: "row",
+      //   justifyContent: "space-between",
+      //   alignItems: "center",
+      //   minWidth: "800px",
+      //   paddingBottom: "2rem",
+      // }}
       >
         <div className="logo ml-8 flex justify-start items-center cursor-pointer scale-110 transition-transform hover:scale-105">
           <Link href="/" passHref>
