@@ -9,13 +9,15 @@ import { logger } from "utils/logger";
 
 const Blogpost: any = ({ post, morePosts, preview }: any) => {
   const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    // return <ErrorPage statusCode={404} />;
-  }
+
   logger(post);
   useEffect(() => {
     hljs.initHighlighting();
   }, []);
+
+  if (!router.isFallback && !post?.slug) {
+    // return <ErrorPage statusCode={404} />;
+  }
 
   const random = parseInt(post.slug, 36).toString(16).slice(0, 6);
 
