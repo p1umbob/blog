@@ -34,12 +34,13 @@ date: "2023-08-27"
 
 ## 优化兼容性
 - 成体系的CSS兼容方案
+  - 使用css预处理器/后处理器：前者提高代码编写的便捷性，后者可以用autoprefixer完善前缀等
   - animation动画：transform不能同时设置 scale/rotate 和 opacity，需要用两个动画曲线分别处理
   - 居中：设计导出的动画没有考虑小屏机的屏幕尺寸（小于375*812）导致absolute布局不居中，使用多一层div包裹，设置相对定位，宽高100%
   - 动画卡顿：ios上，避免使用step(1)的动画，有卡顿感，而应该改为linear，通过动画曲线设置渐变
   - 字体渲染出现白边：对动画文字格栅化渲染问题，可以通过添加will-change优化相应的文字动画；另外也可以通过加上clip-path: inset(1px); 裁剪解决
   - iphone非标准底部，需要添加 iphone对应的变量：env(safe-area-inset-bottom) 但在ios9以下不生效，需要确保添加了fallback的值兼容
-  - 尽量避免使用grid、gap等可能有兼容性问题的属性
+  - 查文档手册，尽量避免使用grid、gap等可能有兼容性问题的属性
 - Mixin
   - 字体渐变
   - 0.5px的边框
