@@ -32,7 +32,7 @@ export const Layout = ({ children }: any) => (
           <Link href="/" passHref>
             <Image
               loader={({ src }) => {
-                return `https://pzij.github.io/${src}`;
+                return `https://fulgari.github.io/${src}`;
               }}
               src="qun.png"
               alt="Jun"
