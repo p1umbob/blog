@@ -34,8 +34,8 @@ export const Layout = ({ children }: any) => (
               loader={({ src }) => {
                 return `https://fulgari.github.io/${src}`;
               }}
-              src="qun.png"
-              alt="Jun"
+              src="fulgari.png"
+              alt="Fulgari"
               width={72}
               height={72}
             />
