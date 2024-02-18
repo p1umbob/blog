@@ -11,10 +11,10 @@ const Contact: any = ({ allPosts }: any) => {
 
       <section className="my-5">
         <p>
-          Github: <a href={"https://github.com/pzij"}>Johnny Pan</a>
+          Github: <a href={"https://github.com/fulgari"}>Fulgari</a>
         </p>
         <p>
-          Juejin: <a href={"https://juejin.cn/user/1345457963935086"}>JohnnyPan</a>
+          Juejin: <a href={"https://juejin.cn/user/1345457963935086"}>Fulgari</a>
         </p>
       </section>
     </Layout>
